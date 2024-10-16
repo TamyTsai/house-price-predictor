@@ -6,6 +6,8 @@
 ### 分支管理
 採用<a href="https://gitbook.tw/chapters/gitflow/why-need-git-flow">gitflow</a>管理方式，主要目的在開發階段採用分支來進行個人的執行事項．待完成後再合併回developer分支，最終穩定版本使用main分支，git UI介面可以使用 <a href="https://www.sourcetreeapp.com/">sourcetree</a>
 
+<a href="https://gitbook.tw/chapters/gitflow/using-git-flow">在sourcetree使用git flow</a>
+
 ### 運行環境與依賴套件
 ```
 python 3.x.x    最新穩定版本(當前3.12.7)
@@ -50,6 +52,11 @@ TODO
 ```
 README.md           專案說明與注意事項，使用markdown寫法
 main.py             應用程式執行入口點
+index.html          網站首頁
+scripts/            網頁前端功能
+    script.js       網頁前端功能
+stylesheets/        css樣式
+    application.css 整個網站共用的樣式   
 lib/                各種類別的程式
     Api.py          提供HTTP呼叫API的快速方法
 ```

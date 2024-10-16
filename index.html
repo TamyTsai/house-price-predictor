@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>房價預測器</title>
     <!-- 暫時先透過cdn引入tailwindcss -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 引入自己寫的css -->
     <link rel="stylesheet" href="stylesheets/application.css">
-    <title>房價預測器</title>
 </head>
 <body>
     <div class="p-3 leading-7">
@@ -18,7 +18,7 @@
                     <section id="search" class="bg-teal-300 rounded-lg mb-2 p-2">
                         <div class="font-bold text-center">欲統計分析之房屋交易資料範圍</div>
                         <p class="text-sm text-slate-500 mb-1">填寫說明：輸入之條件，建議盡量與目標購置房屋之條件相近，以增加預測之參考價值</p>
-                        <select name="city" required>
+                        <select id="city" name="city" required>
                             <option value="" disabled selected hidden>縣市</option>
                             <option value="1">基隆市</option>
                             <option value="2">臺北市</option>
@@ -43,7 +43,7 @@
                             <option value="21">金門縣</option>
                             <option value="22">連江縣</option>
                         </select>
-                        <select name="district" required>
+                        <select id="district" name="district" required>
                             <option value="" disabled selected hidden>鄉鎮市區</option>
                         </select>
                         <br>
@@ -196,5 +196,7 @@
             </section>
         </div>
     </div>
+    <!-- 引入自己寫的js -->
+    <script src="scripts/script.js"></script> 
 </body>
 </html>

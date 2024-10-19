@@ -7,7 +7,7 @@ import customtkinter
 
 window = Tk()
 window.title("Tkinter")
-window.geometry("600x800")
+window.geometry("600x750")
 window.configure(bg="#FFFFFF")
 
 
@@ -31,7 +31,7 @@ Title_1 = customtkinter.CTkLabel(
     bg_color="#FFFFFF",
     fg_color="#FFFFFF",
 )
-Title_1.place(x=50, y=0)
+Title_1.place(x=10, y=0)
 
 # 註解 1
 Title_1_info = customtkinter.CTkLabel(
@@ -45,7 +45,7 @@ Title_1_info = customtkinter.CTkLabel(
     bg_color="#FFFFFF",
     fg_color="#FFFFFF",
 )
-Title_1_info.place(x=10, y=40)
+Title_1_info.place(x=10, y=30)
 
 # 底色框 1 ======================================================================= 位置
 background_frame_1 = customtkinter.CTkFrame(
@@ -55,7 +55,7 @@ background_frame_1 = customtkinter.CTkFrame(
     bg_color="#FFFFFF",
     fg_color="#c8c8c8"
 )
-background_frame_1.place(x=20, y=110)
+background_frame_1.place(x=20, y=60)
 
 # 選單-縣市
 Class_1_optionMenu_1 = customtkinter.CTkOptionMenu(
@@ -173,7 +173,7 @@ background_frame_2 = customtkinter.CTkFrame(
     bg_color="#FFFFFF",
     fg_color="#c8c8c8"
 )
-background_frame_2.place(x=20, y=210)
+background_frame_2.place(x=20, y=160)
 
 # Class_2_title
 Class_2_title = customtkinter.CTkLabel(
@@ -322,12 +322,12 @@ Class_2_title_info.place(x=10, y=57)
 # 底色框 3 ======================================================================= 單價
 background_frame_3 = customtkinter.CTkFrame(
     master=window,
-    height=80,
+    height=60,
     width=360,
     bg_color="#FFFFFF",
     fg_color="#c8c8c8"
 )
-background_frame_3.place(x=20, y=300)
+background_frame_3.place(x=20, y=250)
 
 # Class_3_title 單價
 Class_3_title = customtkinter.CTkLabel(
@@ -341,37 +341,37 @@ Class_3_title = customtkinter.CTkLabel(
     bg_color="transparent",
     fg_color="transparent",
     )
-Class_3_title.place(x=5, y=30)
+Class_3_title.place(x=5, y=10)
 
 # Class_3_radioButton 萬元
 Class_3_radioButton_1 = customtkinter.CTkRadioButton(
     master=background_frame_3,
     variable=radio_var_price,
-    value=25,
+    value=10000,
     text="萬元",
     text_color="#000000",
     border_color="#000000",
     fg_color="#808080",
     hover_color="#2F2F2F",
-    height=30,
-    width=60,
+    height=20,
+    width=40,
     )
-Class_3_radioButton_1.place(x=70, y=20)
+Class_3_radioButton_1.place(x=70, y=5)
 
 # Class_3_radioButton 元
 Class_3_radioButton_2 = customtkinter.CTkRadioButton(
     master=background_frame_3,
     variable=radio_var_price,
-    value=26,
+    value=1,
     text="元",
     text_color="#000000",
     border_color="#000000",
     fg_color="#808080",
     hover_color="#2F2F2F",
-    height=30,
-    width=60,
+    height=20,
+    width=40,
     )
-Class_3_radioButton_2.place(x=70, y=50)
+Class_3_radioButton_2.place(x=70, y=35)
 
 # Class_3_entry 最小
 Class_3_entry_1 = customtkinter.CTkEntry(
@@ -388,13 +388,13 @@ Class_3_entry_1 = customtkinter.CTkEntry(
     bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_3_entry_1.place(x=150, y=30)
+Class_3_entry_1.place(x=150, y=15)
 
 # Class_3_label
 Class_3_label = customtkinter.CTkLabel(
     master=background_frame_3,
     text="~",
-    font=("Arial", 16),
+    font=("Arial", 18),
     text_color="#000000",
     height=30,
     width=25,
@@ -402,7 +402,7 @@ Class_3_label = customtkinter.CTkLabel(
     bg_color="transparent",
     fg_color="transparent",
     )
-Class_3_label.place(x=240, y=30)
+Class_3_label.place(x=240, y=15)
 
 # Class_3_entry 最大
 Class_3_entry_2 = customtkinter.CTkEntry(
@@ -419,17 +419,17 @@ Class_3_entry_2 = customtkinter.CTkEntry(
     bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_3_entry_2.place(x=270, y=30)
+Class_3_entry_2.place(x=270, y=15)
 
 # 底色框 4 ======================================================================= 面積
 background_frame_4 = customtkinter.CTkFrame(
     master=window,
-    height=80,
+    height=60,
     width=360,
     bg_color="#FFFFFF",
     fg_color="#c8c8c8"
 )
-background_frame_4.place(x=20, y=390)
+background_frame_4.place(x=20, y=320)
 
 # Class_4_title 面積
 Class_4_title = customtkinter.CTkLabel(
@@ -449,31 +449,31 @@ Class_4_title.place(x=5, y=10)
 Class_4_radioButton_1 = customtkinter.CTkRadioButton(
     master=background_frame_4,
     variable=radio_var_areaA,
-    value=34,
+    value=0,
     text="平方米",
     text_color="#000000",
     border_color="#000000",
     fg_color="#808080",
     hover_color="#2F2F2F",
-    height=30,
+    height=20,
     width=60,
     )
-Class_4_radioButton_1.place(x=70, y=0)
+Class_4_radioButton_1.place(x=70, y=5)
 
 # Class_4_radioButton 坪
 Class_4_radioButton_2 = customtkinter.CTkRadioButton(
     master=background_frame_4,
     variable=radio_var_areaA,
-    value=36,
+    value=1,
     text="坪",
     text_color="#000000",
     border_color="#000000",
     fg_color="#808080",
     hover_color="#2F2F2F",
-    height=30,
+    height=20,
     width=60,
     )
-Class_4_radioButton_2.place(x=70, y=30)
+Class_4_radioButton_2.place(x=70, y=35)
 
 # Class_4_entry 最小
 Class_4_entry_1 = customtkinter.CTkEntry(
@@ -490,13 +490,13 @@ Class_4_entry_1 = customtkinter.CTkEntry(
     bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_4_entry_1.place(x=150, y=10)
+Class_4_entry_1.place(x=150, y=15)
 
 # Class_4_label
 Class_4_label = customtkinter.CTkLabel(
     master=background_frame_4,
     text="~",
-    font=("Arial", 16),
+    font=("Arial", 18),
     text_color="#000000",
     height=30,
     width=25,
@@ -504,7 +504,7 @@ Class_4_label = customtkinter.CTkLabel(
     bg_color="transparent",
     fg_color="transparent",
     )
-Class_4_label.place(x=240, y=10)
+Class_4_label.place(x=240, y=15)
 
 # Class_4_entry 最大
 Class_4_entry_2 = customtkinter.CTkEntry(
@@ -521,17 +521,17 @@ Class_4_entry_2 = customtkinter.CTkEntry(
     bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_4_entry_2.place(x=270, y=10)
+Class_4_entry_2.place(x=270, y=15)
 
 # 底色框 5 ======================================================================= 屋齡
 background_frame_5 = customtkinter.CTkFrame(
     master=window,
-    height=80,
-    width=200,
+    height=60,
+    width=180,
     bg_color="#FFFFFF",
     fg_color="#c8c8c8"
 )
-background_frame_5.place(x=390, y=340)
+background_frame_5.place(x=390, y=250)
 
 # Class_5_title
 Class_5_title = customtkinter.CTkLabel(
@@ -545,7 +545,7 @@ Class_5_title = customtkinter.CTkLabel(
     bg_color="transparent",
     fg_color="transparent",
     )
-Class_5_title.place(x=10, y=20)
+Class_5_title.place(x=10, y=10)
 
 # 屋齡-選單
 Class_5_optionMenu = customtkinter.CTkOptionMenu(
@@ -560,7 +560,7 @@ Class_5_optionMenu = customtkinter.CTkOptionMenu(
     bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_5_optionMenu.place(x=80, y=20)
+Class_5_optionMenu.place(x=70, y=10)
 
 
 # 大標 2 ======================================================================= 目標
@@ -575,7 +575,7 @@ Title_2 = customtkinter.CTkLabel(
     bg_color="#FFFFFF",
     fg_color="#FFFFFF",
     )
-Title_2.place(x=0, y=470)
+Title_2.place(x=10, y=390)
 
 
 # 底色框 6 ======================================================================= 目標時間
@@ -586,7 +586,7 @@ background_frame_6 = customtkinter.CTkFrame(
     bg_color="#FFFFFF",
     fg_color="#c8c8c8"
 )
-background_frame_6.place(x=20, y=510)
+background_frame_6.place(x=20, y=430)
 
 # Class_6_title
 Class_6_title = customtkinter.CTkLabel(
@@ -621,7 +621,7 @@ Class_6_optionMenu_year.place(x=90, y=10)
 Class_6_label_1 = customtkinter.CTkLabel(
     master=background_frame_6,
     text="~",
-    font=("Arial", 16),
+    font=("Arial", 18),
     text_color="#000000",
     height=40,
     width=30,
@@ -649,12 +649,12 @@ Class_6_optionMenu_mon.place(x=220, y=10)
 # 底色框 7 ======================================================================= 目標面積
 background_frame_7 = customtkinter.CTkFrame(
     master=window,
-    height=80,
+    height=60,
     width=350,
     bg_color="#FFFFFF",
     fg_color="#c8c8c8"
 )
-background_frame_7.place(x=20, y=580)
+background_frame_7.place(x=20, y=500)
 
 # Class_7_title
 Class_7_title = customtkinter.CTkLabel(
@@ -674,31 +674,31 @@ Class_7_title.place(x=5, y=10)
 Class_7_radioButton_1 = customtkinter.CTkRadioButton(
     master=background_frame_7,
     variable=radio_var_areaB,
-    value=45,
+    value=0,
     text="平方米",
     text_color="#000000",
     border_color="#000000",
     fg_color="#808080",
     hover_color="#2F2F2F",
-    height=30,
+    height=20,
     width=60,
     )
-Class_7_radioButton_1.place(x=80, y=0)
+Class_7_radioButton_1.place(x=80, y=5)
 
 # 選項-坪
 Class_7_radioButton_2 = customtkinter.CTkRadioButton(
     master=background_frame_7,
     variable=radio_var_areaB,
-    value=46,
+    value=1,
     text="坪",
     text_color="#000000",
     border_color="#000000",
     fg_color="#808080",
     hover_color="#2F2F2F",
-    height=30,
+    height=20,
     width=60,
     )
-Class_7_radioButton_2.place(x=80, y=30)
+Class_7_radioButton_2.place(x=80, y=35)
 
 # 輸入面積
 Class_7_entry = customtkinter.CTkEntry(
@@ -737,7 +737,7 @@ Output_button = customtkinter.CTkButton(
     bg_color="#FFFFFF",
     fg_color="#75f6ff",
     )
-Output_button.place(x=200, y=660)
+Output_button.place(x=200, y=600)
 
 # 輸出區
 Output_label = customtkinter.CTkLabel(
@@ -749,9 +749,9 @@ Output_label = customtkinter.CTkLabel(
     width=300,
     corner_radius=0,
     bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    fg_color="#EEEEEE",
     )
-Output_label.place(x=140, y=720)
+Output_label.place(x=140, y=660)
 
 #run the main loop
 window.mainloop()

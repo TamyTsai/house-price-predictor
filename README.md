@@ -7,7 +7,7 @@
 採用<a href="https://gitbook.tw/chapters/gitflow/why-need-git-flow">gitflow</a>管理方式，主要目的在開發階段採用分支來進行個人的執行事項．待完成後再合併回developer分支，最終穩定版本使用main分支，git UI介面可以使用 <a href="https://www.sourcetreeapp.com/">sourcetree</a>
 
 ### 分支 GUI
-by Mark\n
+by Mark\\n
 進度: 基本打版、排版細修(物件)
 待辦: 排版細修(文字)、事件系統、字型/樣式調整
 

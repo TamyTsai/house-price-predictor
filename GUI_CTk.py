@@ -7,7 +7,7 @@ import customtkinter
 
 window = Tk()
 window.title("Tkinter")
-window.geometry("600x750")
+window.geometry("600x720")
 window.configure(bg="#FFFFFF")
 
 
@@ -23,7 +23,8 @@ radio_var_areaB = IntVar()
 Title_1 = customtkinter.CTkLabel(
     master=window,
     text="欲統計分析之交易資料條件範圍",
-    font=("Arial", 20),
+    font=("Microsoft JhengHei", 20, "bold"),
+    anchor="w",  # 左對齊
     text_color="#000000",
     height=40,
     width=300,
@@ -37,7 +38,8 @@ Title_1.place(x=10, y=0)
 Title_1_info = customtkinter.CTkLabel(
     master=window,
     text="填寫說明: 輸入之條件建議盡量與目標購置之房屋條件相近，以增加預測可參考性",
-    font=("Arial", 14),
+    font=("Microsoft JhengHei", 14),
+    anchor="w",
     text_color="#646464",
     height=30,
     width=300,
@@ -152,7 +154,7 @@ Class_1_entry = customtkinter.CTkEntry(
     master=background_frame_1,
     placeholder_text="門牌/社區名稱",
     placeholder_text_color="#454545",
-    font=("Arial", 14),
+    font=("Microsoft JhengHei", 14),
     text_color="#000000",
     height=50,
     width=120,
@@ -179,7 +181,7 @@ background_frame_2.place(x=20, y=160)
 Class_2_title = customtkinter.CTkLabel(
     master=background_frame_2,
     text="交易期間:",
-    font=("Arial", 16),
+    font=("Microsoft JhengHei", 16),
     text_color="#000000",
     height=40,
     width=80,
@@ -208,7 +210,7 @@ Class_2_optionMenu_year1.place(x=90, y=15)
 Class_2_label_1 = customtkinter.CTkLabel(
     master=background_frame_2,
     text="年",
-    font=("Arial", 16),
+    font=("Microsoft JhengHei", 16),
     text_color="#000000",
     height=40,
     width=20,
@@ -237,7 +239,7 @@ Class_2_optionMenu_mon1.place(x=200, y=15)
 Class_2_label_2 = customtkinter.CTkLabel(
     master=background_frame_2,
     text="至",
-    font=("Arial", 16),
+    font=("Microsoft JhengHei", 16),
     text_color="#000000",
     height=40,
     width=20,
@@ -266,7 +268,7 @@ Class_2_optionMenu_year2.place(x=310, y=15)
 Class_2_label_3 = customtkinter.CTkLabel(
     master=background_frame_2,
     text="年",
-    font=("Arial", 16),
+    font=("Microsoft JhengHei", 16),
     text_color="#000000",
     height=40,
     width=20,
@@ -295,7 +297,7 @@ Class_2_optionMenu_mon2.place(x=430, y=15)
 Class_2_label_4 = customtkinter.CTkLabel(
     master=background_frame_2,
     text="止",
-    font=("Arial", 16),
+    font=("Microsoft JhengHei", 16),
     text_color="#000000",
     height=40,
     width=20,
@@ -309,7 +311,8 @@ Class_2_label_4.place(x=520, y=15)
 Class_2_title_info = customtkinter.CTkLabel(
     master=background_frame_2,
     text="填寫說明: 建議選擇欲購置時間的前半年至一年左右",
-    font=("Arial", 14),
+    font=("Microsoft JhengHei", 14),
+    anchor="w",
     text_color="#646464",
     height=20,
     width=300,
@@ -333,7 +336,7 @@ background_frame_3.place(x=20, y=250)
 Class_3_title = customtkinter.CTkLabel(
     master=background_frame_3,
     text="單價:",
-    font=("Arial", 16),
+    font=("Microsoft JhengHei", 16),
     text_color="#000000",
     height=40,
     width=60,
@@ -378,7 +381,7 @@ Class_3_entry_1 = customtkinter.CTkEntry(
     master=background_frame_3,
     placeholder_text="最小",
     placeholder_text_color="#454545",
-    font=("Arial", 14),
+    font=("Microsoft JhengHei", 14),
     text_color="#000000",
     height=30,
     width=80,
@@ -394,7 +397,7 @@ Class_3_entry_1.place(x=150, y=15)
 Class_3_label = customtkinter.CTkLabel(
     master=background_frame_3,
     text="~",
-    font=("Arial", 18),
+    font=("Microsoft JhengHei", 18),
     text_color="#000000",
     height=30,
     width=25,
@@ -409,7 +412,7 @@ Class_3_entry_2 = customtkinter.CTkEntry(
     master=background_frame_3,
     placeholder_text="最大",
     placeholder_text_color="#454545",
-    font=("Arial", 14),
+    font=("Microsoft JhengHei", 14),
     text_color="#000000",
     height=30,
     width=80,
@@ -435,7 +438,7 @@ background_frame_4.place(x=20, y=320)
 Class_4_title = customtkinter.CTkLabel(
     master=background_frame_4,
     text="面積:",
-    font=("Arial", 16),
+    font=("Microsoft JhengHei", 16),
     text_color="#000000",
     height=40,
     width=60,
@@ -480,7 +483,7 @@ Class_4_entry_1 = customtkinter.CTkEntry(
     master=background_frame_4,
     placeholder_text="最小",
     placeholder_text_color="#454545",
-    font=("Arial", 14),
+    font=("Microsoft JhengHei", 14),
     text_color="#000000",
     height=30,
     width=80,
@@ -496,7 +499,7 @@ Class_4_entry_1.place(x=150, y=15)
 Class_4_label = customtkinter.CTkLabel(
     master=background_frame_4,
     text="~",
-    font=("Arial", 18),
+    font=("Microsoft JhengHei", 18),
     text_color="#000000",
     height=30,
     width=25,
@@ -511,7 +514,7 @@ Class_4_entry_2 = customtkinter.CTkEntry(
     master=background_frame_4,
     placeholder_text="最大",
     placeholder_text_color="#454545",
-    font=("Arial", 14),
+    font=("Microsoft JhengHei", 14),
     text_color="#000000",
     height=30,
     width=80,
@@ -537,7 +540,7 @@ background_frame_5.place(x=390, y=250)
 Class_5_title = customtkinter.CTkLabel(
     master=background_frame_5,
     text="屋齡:",
-    font=("Arial", 16),
+    font=("Microsoft JhengHei", 16),
     text_color="#000000",
     height=40,
     width=60,
@@ -567,7 +570,8 @@ Class_5_optionMenu.place(x=70, y=10)
 Title_2 = customtkinter.CTkLabel(
     master=window,
     text="目標購置之房屋資訊",
-    font=("Arial", 20),
+    font=("Microsoft JhengHei", 20, "bold"),
+    anchor="w",
     text_color="#000000",
     height=40,
     width=300,
@@ -592,7 +596,7 @@ background_frame_6.place(x=20, y=430)
 Class_6_title = customtkinter.CTkLabel(
     master=background_frame_6,
     text="時間:",
-    font=("Arial", 16),
+    font=("Microsoft JhengHei", 16),
     text_color="#000000",
     height=40,
     width=60,
@@ -621,7 +625,7 @@ Class_6_optionMenu_year.place(x=90, y=10)
 Class_6_label_1 = customtkinter.CTkLabel(
     master=background_frame_6,
     text="~",
-    font=("Arial", 18),
+    font=("Microsoft JhengHei", 18),
     text_color="#000000",
     height=40,
     width=30,
@@ -660,7 +664,7 @@ background_frame_7.place(x=20, y=500)
 Class_7_title = customtkinter.CTkLabel(
     master=background_frame_7,
     text="面積:",
-    font=("Arial", 16),
+    font=("Microsoft JhengHei", 16),
     text_color="#000000",
     height=40,
     width=60,
@@ -705,7 +709,7 @@ Class_7_entry = customtkinter.CTkEntry(
     master=background_frame_7,
     placeholder_text="輸入面積",
     placeholder_text_color="#454545",
-    font=("Arial", 14),
+    font=("Microsoft JhengHei", 14),
     text_color="#000000",
     height=40,
     width=120,
@@ -725,33 +729,33 @@ Class_7_entry.place(x=180, y=10)
 Output_button = customtkinter.CTkButton(
     master=window,
     text="生成資料",
-    font=("undefined", 18),
+    font=("Microsoft JhengHei", 18, "bold"),
     text_color="#000000",
     hover=True,
     hover_color="#949494",
     height=50,
-    width=150,
+    width=140,
     border_width=2,
     corner_radius=6,
     border_color="#000000",
     bg_color="#FFFFFF",
     fg_color="#75f6ff",
     )
-Output_button.place(x=200, y=600)
+Output_button.place(x=230, y=580)
 
 # 輸出區
 Output_label = customtkinter.CTkLabel(
     master=window,
     text="輸出區",
-    font=("Arial", 16),
+    font=("Microsoft JhengHei", 16),
     text_color="#0033ff",
-    height=80,
-    width=300,
+    height=70,
+    width=580,
     corner_radius=0,
     bg_color="#FFFFFF",
     fg_color="#EEEEEE",
     )
-Output_label.place(x=140, y=660)
+Output_label.place(x=10, y=640)
 
 #run the main loop
 window.mainloop()

@@ -166,36 +166,32 @@ Class_1_entry.place(x=420, y=15)
 
 
 # 底色框 2 ======================================================================= 時間
-Class_2_background = customtkinter.CTkLabel(
+background_frame_2 = customtkinter.CTkFrame(
     master=window,
-    text=" ",
-    font=("Arial", 14),
-    text_color="#000000",
     height=80,
     width=550,
-    corner_radius=0,
     bg_color="#FFFFFF",
-    fg_color="#c8c8c8",
-    )
-Class_2_background.place(x=20, y=210)
+    fg_color="#c8c8c8"
+)
+background_frame_2.place(x=20, y=210)
 
 # Class_2_title
 Class_2_title = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_2,
     text="交易期間:",
     font=("Arial", 16),
     text_color="#000000",
     height=40,
     width=80,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
 )
-Class_2_title.place(x=20, y=220)
+Class_2_title.place(x=5, y=15)
 
 # 起始年
 Class_2_optionMenu_year1 = customtkinter.CTkOptionMenu(
-    master=window,
+    master=background_frame_2,
     values=["100年", "101年", "102年"],
     font=("undefined", 14),
     text_color="#000000",
@@ -203,28 +199,28 @@ Class_2_optionMenu_year1 = customtkinter.CTkOptionMenu(
     height=40,
     width=60,
     corner_radius=6,
-    bg_color="#FFFFFF",
+    bg_color="transparent",
     fg_color="#F0F0F0",
 )
-Class_2_optionMenu_year1.place(x=120, y=220)
+Class_2_optionMenu_year1.place(x=90, y=15)
 
 # Class_2_label_1
 Class_2_label_1 = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_2,
     text="年",
     font=("Arial", 16),
     text_color="#000000",
     height=40,
-    width=30,
+    width=20,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
 )
-Class_2_label_1.place(x=180, y=220)
+Class_2_label_1.place(x=180, y=15)
 
 # 起始月
 Class_2_optionMenu_mon1 = customtkinter.CTkOptionMenu(
-    master=window,
+    master=background_frame_2,
     values=["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],
     font=("undefined", 14),
     text_color="#000000",
@@ -232,28 +228,28 @@ Class_2_optionMenu_mon1 = customtkinter.CTkOptionMenu(
     height=40,
     width=60,
     corner_radius=6,
-    bg_color="#FFFFFF",
+    bg_color="transparent",
     fg_color="#F0F0F0",
 )
-Class_2_optionMenu_mon1.place(x=210, y=220)
+Class_2_optionMenu_mon1.place(x=200, y=15)
 
 # Class_2_label_2
 Class_2_label_2 = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_2,
     text="至",
     font=("Arial", 16),
     text_color="#000000",
     height=40,
-    width=30,
+    width=20,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
 )
-Class_2_label_2.place(x=290, y=220)
+Class_2_label_2.place(x=280, y=15)
 
 # 結束年
 Class_2_optionMenu_year2 = customtkinter.CTkOptionMenu(
-    master=window,
+    master=background_frame_2,
     values=["100年", "101年", "102年"],
     font=("undefined", 14),
     text_color="#000000",
@@ -261,28 +257,28 @@ Class_2_optionMenu_year2 = customtkinter.CTkOptionMenu(
     height=40,
     width=60,
     corner_radius=6,
-    bg_color="#FFFFFF",
+    bg_color="transparent",
     fg_color="#F0F0F0",
 )
-Class_2_optionMenu_year2.place(x=340, y=220)
+Class_2_optionMenu_year2.place(x=310, y=15)
 
 # Class_2_label_3
 Class_2_label_3 = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_2,
     text="年",
     font=("Arial", 16),
     text_color="#000000",
     height=40,
-    width=30,
+    width=20,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
 )
-Class_2_label_3.place(x=400, y=220)
+Class_2_label_3.place(x=400, y=15)
 
 # 結束月
 Class_2_optionMenu_mon2 = customtkinter.CTkOptionMenu(
-    master=window,
+    master=background_frame_2,
     values=["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],
     font=("undefined", 14),
     text_color="#000000",
@@ -290,70 +286,66 @@ Class_2_optionMenu_mon2 = customtkinter.CTkOptionMenu(
     height=40,
     width=60,
     corner_radius=6,
-    bg_color="#FFFFFF",
+    bg_color="transparent",
     fg_color="#F0F0F0",
 )
-Class_2_optionMenu_mon2.place(x=430, y=220)
+Class_2_optionMenu_mon2.place(x=430, y=15)
 
 # Class_2_label_4
 Class_2_label_4 = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_2,
     text="止",
     font=("Arial", 16),
     text_color="#000000",
     height=40,
-    width=30,
+    width=20,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
 )
-Class_2_label_4.place(x=510, y=220)
+Class_2_label_4.place(x=520, y=15)
 
 # Class_2_title_info
 Class_2_title_info = customtkinter.CTkLabel(
-    master=window,
-    text="說明2",
+    master=background_frame_2,
+    text="填寫說明: 建議選擇欲購置時間的前半年至一年左右",
     font=("Arial", 14),
     text_color="#646464",
-    height=30,
+    height=20,
     width=300,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
 )
-Class_2_title_info.place(x=20, y=260)
+Class_2_title_info.place(x=10, y=57)
 
 # 底色框 3 ======================================================================= 單價
-Class_3_background = customtkinter.CTkLabel(
+background_frame_3 = customtkinter.CTkFrame(
     master=window,
-    text=" ",
-    font=("Arial", 14),
-    text_color="#000000",
     height=80,
     width=360,
-    corner_radius=0,
     bg_color="#FFFFFF",
-    fg_color="#c8c8c8",
-    )
-Class_3_background.place(x=20, y=300)
+    fg_color="#c8c8c8"
+)
+background_frame_3.place(x=20, y=300)
 
 # Class_3_title 單價
 Class_3_title = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_3,
     text="單價:",
     font=("Arial", 16),
     text_color="#000000",
     height=40,
     width=60,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
     )
-Class_3_title.place(x=20, y=330)
+Class_3_title.place(x=5, y=30)
 
 # Class_3_radioButton 萬元
 Class_3_radioButton_1 = customtkinter.CTkRadioButton(
-    master=window,
+    master=background_frame_3,
     variable=radio_var_price,
     value=25,
     text="萬元",
@@ -364,11 +356,11 @@ Class_3_radioButton_1 = customtkinter.CTkRadioButton(
     height=30,
     width=60,
     )
-Class_3_radioButton_1.place(x=90, y=320)
+Class_3_radioButton_1.place(x=70, y=20)
 
 # Class_3_radioButton 元
 Class_3_radioButton_2 = customtkinter.CTkRadioButton(
-    master=window,
+    master=background_frame_3,
     variable=radio_var_price,
     value=26,
     text="元",
@@ -379,11 +371,11 @@ Class_3_radioButton_2 = customtkinter.CTkRadioButton(
     height=30,
     width=60,
     )
-Class_3_radioButton_2.place(x=90, y=350)
+Class_3_radioButton_2.place(x=70, y=50)
 
 # Class_3_entry 最小
 Class_3_entry_1 = customtkinter.CTkEntry(
-    master=window,
+    master=background_frame_3,
     placeholder_text="最小",
     placeholder_text_color="#454545",
     font=("Arial", 14),
@@ -393,28 +385,28 @@ Class_3_entry_1 = customtkinter.CTkEntry(
     border_width=2,
     corner_radius=6,
     border_color="#000000",
-    bg_color="#FFFFFF",
+    bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_3_entry_1.place(x=170, y=330)
+Class_3_entry_1.place(x=150, y=30)
 
 # Class_3_label
 Class_3_label = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_3,
     text="~",
     font=("Arial", 16),
     text_color="#000000",
     height=30,
     width=25,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
     )
-Class_3_label.place(x=260, y=330)
+Class_3_label.place(x=240, y=30)
 
 # Class_3_entry 最大
 Class_3_entry_2 = customtkinter.CTkEntry(
-    master=window,
+    master=background_frame_3,
     placeholder_text="最大",
     placeholder_text_color="#454545",
     font=("Arial", 14),
@@ -424,42 +416,38 @@ Class_3_entry_2 = customtkinter.CTkEntry(
     border_width=2,
     corner_radius=6,
     border_color="#000000",
-    bg_color="#FFFFFF",
+    bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_3_entry_2.place(x=290, y=330)
+Class_3_entry_2.place(x=270, y=30)
 
 # 底色框 4 ======================================================================= 面積
-Class_4_background = customtkinter.CTkLabel(
+background_frame_4 = customtkinter.CTkFrame(
     master=window,
-    text=" ",
-    font=("Arial", 14),
-    text_color="#000000",
     height=80,
     width=360,
-    corner_radius=0,
     bg_color="#FFFFFF",
-    fg_color="#c8c8c8",
-    )
-Class_4_background.place(x=20, y=390)
+    fg_color="#c8c8c8"
+)
+background_frame_4.place(x=20, y=390)
 
 # Class_4_title 面積
 Class_4_title = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_4,
     text="面積:",
     font=("Arial", 16),
     text_color="#000000",
     height=40,
     width=60,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
     )
-Class_4_title.place(x=20, y=400)
+Class_4_title.place(x=5, y=10)
 
 # Class_4_radioButton 平方米 M^2
 Class_4_radioButton_1 = customtkinter.CTkRadioButton(
-    master=window,
+    master=background_frame_4,
     variable=radio_var_areaA,
     value=34,
     text="平方米",
@@ -470,11 +458,11 @@ Class_4_radioButton_1 = customtkinter.CTkRadioButton(
     height=30,
     width=60,
     )
-Class_4_radioButton_1.place(x=90, y=390)
+Class_4_radioButton_1.place(x=70, y=0)
 
 # Class_4_radioButton 坪
 Class_4_radioButton_2 = customtkinter.CTkRadioButton(
-    master=window,
+    master=background_frame_4,
     variable=radio_var_areaA,
     value=36,
     text="坪",
@@ -485,11 +473,11 @@ Class_4_radioButton_2 = customtkinter.CTkRadioButton(
     height=30,
     width=60,
     )
-Class_4_radioButton_2.place(x=90, y=420)
+Class_4_radioButton_2.place(x=70, y=30)
 
 # Class_4_entry 最小
 Class_4_entry_1 = customtkinter.CTkEntry(
-    master=window,
+    master=background_frame_4,
     placeholder_text="最小",
     placeholder_text_color="#454545",
     font=("Arial", 14),
@@ -499,28 +487,28 @@ Class_4_entry_1 = customtkinter.CTkEntry(
     border_width=2,
     corner_radius=6,
     border_color="#000000",
-    bg_color="#FFFFFF",
+    bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_4_entry_1.place(x=170, y=400)
+Class_4_entry_1.place(x=150, y=10)
 
 # Class_4_label
 Class_4_label = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_4,
     text="~",
     font=("Arial", 16),
     text_color="#000000",
     height=30,
     width=25,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
     )
-Class_4_label.place(x=260, y=400)
+Class_4_label.place(x=240, y=10)
 
 # Class_4_entry 最大
 Class_4_entry_2 = customtkinter.CTkEntry(
-    master=window,
+    master=background_frame_4,
     placeholder_text="最大",
     placeholder_text_color="#454545",
     font=("Arial", 14),
@@ -530,42 +518,38 @@ Class_4_entry_2 = customtkinter.CTkEntry(
     border_width=2,
     corner_radius=6,
     border_color="#000000",
-    bg_color="#FFFFFF",
+    bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_4_entry_2.place(x=290, y=400)
+Class_4_entry_2.place(x=270, y=10)
 
 # 底色框 5 ======================================================================= 屋齡
-Class_5_background = customtkinter.CTkLabel(
+background_frame_5 = customtkinter.CTkFrame(
     master=window,
-    text=" ",
-    font=("Arial", 14),
-    text_color="#000000",
     height=80,
     width=200,
-    corner_radius=0,
     bg_color="#FFFFFF",
-    fg_color="#c8c8c8",
-    )
-Class_5_background.place(x=390, y=340)
+    fg_color="#c8c8c8"
+)
+background_frame_5.place(x=390, y=340)
 
 # Class_5_title
 Class_5_title = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_5,
     text="屋齡:",
     font=("Arial", 16),
     text_color="#000000",
     height=40,
     width=60,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
     )
-Class_5_title.place(x=400, y=360)
+Class_5_title.place(x=10, y=20)
 
 # 屋齡-選單
 Class_5_optionMenu = customtkinter.CTkOptionMenu(
-    master=window,
+    master=background_frame_5,
     values=["1年內", "1~3年", "3~5年", "5~10年", "10~20年", "20年以上"],
     font=("undefined", 14),
     text_color="#000000",
@@ -573,10 +557,10 @@ Class_5_optionMenu = customtkinter.CTkOptionMenu(
     height=40,
     width=80,
     corner_radius=6,
-    bg_color="#FFFFFF",
+    bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_5_optionMenu.place(x=470, y=360)
+Class_5_optionMenu.place(x=80, y=20)
 
 
 # 大標 2 ======================================================================= 目標
@@ -595,36 +579,32 @@ Title_2.place(x=0, y=470)
 
 
 # 底色框 6 ======================================================================= 目標時間
-Class_6_background = customtkinter.CTkLabel(
+background_frame_6 = customtkinter.CTkFrame(
     master=window,
-    text=" ",
-    font=("Arial", 14),
-    text_color="#000000",
     height=60,
     width=350,
-    corner_radius=0,
     bg_color="#FFFFFF",
-    fg_color="#c8c8c8",
-    )
-Class_6_background.place(x=20, y=510)
+    fg_color="#c8c8c8"
+)
+background_frame_6.place(x=20, y=510)
 
 # Class_6_title
 Class_6_title = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_6,
     text="時間:",
     font=("Arial", 16),
     text_color="#000000",
     height=40,
     width=60,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
     )
-Class_6_title.place(x=20, y=520)
+Class_6_title.place(x=5, y=10)
 
 # 目標時間 年
 Class_6_optionMenu_year = customtkinter.CTkOptionMenu(
-    master=window,
+    master=background_frame_6,
     values=["100年", "101年", "102年"],
     font=("undefined", 14),
     text_color="#000000",
@@ -632,28 +612,28 @@ Class_6_optionMenu_year = customtkinter.CTkOptionMenu(
     height=40,
     width=80,
     corner_radius=6,
-    bg_color="#FFFFFF",
+    bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_6_optionMenu_year.place(x=110, y=520)
+Class_6_optionMenu_year.place(x=90, y=10)
 
 # Class_6_label_1
 Class_6_label_1 = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_6,
     text="~",
     font=("Arial", 16),
     text_color="#000000",
     height=40,
     width=30,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
     )
-Class_6_label_1.place(x=200, y=520)
+Class_6_label_1.place(x=180, y=10)
 
 # 目標時間 月
 Class_6_optionMenu_mon = customtkinter.CTkOptionMenu(
-    master=window,
+    master=background_frame_6,
     values=["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],
     font=("undefined", 14),
     text_color="#000000",
@@ -661,42 +641,38 @@ Class_6_optionMenu_mon = customtkinter.CTkOptionMenu(
     height=40,
     width=80,
     corner_radius=6,
-    bg_color="#FFFFFF",
+    bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_6_optionMenu_mon.place(x=240, y=520)
+Class_6_optionMenu_mon.place(x=220, y=10)
 
 # 底色框 7 ======================================================================= 目標面積
-Class_7_background = customtkinter.CTkLabel(
+background_frame_7 = customtkinter.CTkFrame(
     master=window,
-    text=" ",
-    font=("Arial", 14),
-    text_color="#000000",
     height=80,
     width=350,
-    corner_radius=0,
     bg_color="#FFFFFF",
-    fg_color="#c8c8c8",
-    )
-Class_7_background.place(x=20, y=580)
+    fg_color="#c8c8c8"
+)
+background_frame_7.place(x=20, y=580)
 
 # Class_7_title
 Class_7_title = customtkinter.CTkLabel(
-    master=window,
+    master=background_frame_7,
     text="面積:",
     font=("Arial", 16),
     text_color="#000000",
     height=40,
     width=60,
     corner_radius=0,
-    bg_color="#FFFFFF",
-    fg_color="#FFFFFF",
+    bg_color="transparent",
+    fg_color="transparent",
     )
-Class_7_title.place(x=20, y=590)
+Class_7_title.place(x=5, y=10)
 
 # 選項-M^2
 Class_7_radioButton_1 = customtkinter.CTkRadioButton(
-    master=window,
+    master=background_frame_7,
     variable=radio_var_areaB,
     value=45,
     text="平方米",
@@ -707,11 +683,11 @@ Class_7_radioButton_1 = customtkinter.CTkRadioButton(
     height=30,
     width=60,
     )
-Class_7_radioButton_1.place(x=100, y=580)
+Class_7_radioButton_1.place(x=80, y=0)
 
 # 選項-坪
 Class_7_radioButton_2 = customtkinter.CTkRadioButton(
-    master=window,
+    master=background_frame_7,
     variable=radio_var_areaB,
     value=46,
     text="坪",
@@ -722,11 +698,11 @@ Class_7_radioButton_2 = customtkinter.CTkRadioButton(
     height=30,
     width=60,
     )
-Class_7_radioButton_2.place(x=100, y=610)
+Class_7_radioButton_2.place(x=80, y=30)
 
 # 輸入面積
 Class_7_entry = customtkinter.CTkEntry(
-    master=window,
+    master=background_frame_7,
     placeholder_text="輸入面積",
     placeholder_text_color="#454545",
     font=("Arial", 14),
@@ -736,10 +712,10 @@ Class_7_entry = customtkinter.CTkEntry(
     border_width=2,
     corner_radius=6,
     border_color="#000000",
-    bg_color="#FFFFFF",
+    bg_color="transparent",
     fg_color="#F0F0F0",
     )
-Class_7_entry.place(x=200, y=590)
+Class_7_entry.place(x=180, y=10)
 
 """
  ########################################  資料輸出區  ########################################

@@ -8,6 +8,7 @@
 
 ### 分支 GUI
 by Mark ;
+套件: tkinter、customtkinter ;
 進度: 基本打版、排版細修(物件、文字) ;
 待辦: 字型/樣式調整、事件系統
 

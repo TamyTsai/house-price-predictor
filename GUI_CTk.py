@@ -5,7 +5,8 @@ import customtkinter
 
 # Main Window Properties
 
-window = Tk()
+#window = Tk()                   # 初始化 tkinter 視窗
+window = customtkinter.CTk()    # 初始化 customtkinter 視窗
 window.title("Tkinter")
 window.geometry("600x720")
 window.configure(bg="#FFFFFF")

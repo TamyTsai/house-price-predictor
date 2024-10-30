@@ -1,62 +1,14 @@
-# NOU_python_zzz002_work
-空大113上Pythont程式設計期末小組專案
-專案用途與說明 TODO，
-<a href="https://nou.tronclass.com.tw/course/54317/group-set#/topics/66121?show_sidebar=false&scrollTo=topic-66121&groupId=9086&pageIndex=1&pageCount=1&topicIds=66121,65692&predicate=lastUpdatedDate&reverse">當前提案（房價預測器）</a>
+# 房價預測器
 
-### 分支管理
-採用<a href="https://gitbook.tw/chapters/gitflow/why-need-git-flow">gitflow</a>管理方式，主要目的在開發階段採用分支來進行個人的執行事項．待完成後再合併回developer分支，最終穩定版本使用main分支，git UI介面可以使用 <a href="https://www.sourcetreeapp.com/">sourcetree</a>
+# 關於房價預測器
+- 本專案透過爬取內政部實價登錄資料，用最真實的成交資料作為依據，以統計學方法科學地預測房價行情。
+- 在現今臺灣房價飛漲，房價所得比不斷上升的年代，購屋已不易，又若購屋前沒有做足功課及進行相關統計分析，不熟悉欲購置區域的行情，就容易被當盤子，以高於行情的價格成交。
+- 購屋前的資料蒐集及統計分析費時又費力，而透過本專案開發之網頁，購屋者可藉由篩選特定條件的房屋交易資料，並輸入欲購置的時間及物件坪數等相關資料，就可以快速得到欲購買標的之預測房價。有了房屋預測價格，購屋時便不易遭屋主或房仲之話術欺騙，導致買貴。
+- 本專案開發之網頁可減輕購屋者購屋前資料收集分析的負擔，增加決策正確性及速度，並提供議價依據。
 
-<a href="https://gitbook.tw/chapters/gitflow/using-git-flow">在sourcetree使用git flow</a>
-
-### 運行環境與依賴套件
-```
-python 3.x.x    最新穩定版本(當前3.12.7)
-pip3            最新穩定隨付(當前24.2)
-request         進行http的訪問與資料取得
-Beautifulsoup4  網路爬蟲取得的資料解析
-tkinter         UI介面處理(未定)
-```
-
-### 註解格式
-依循 PEP 257
-``` python
-def add(a, b):
-    """
-    Return the sum of two numbers.
-
-    Args:
-        a (int, float): The first number.
-        b (int, float): The second number.
-
-    Returns:
-        int, float: The sum of the two numbers.
-
-    Example:
-        >>> add(3, 4)
-        7
-        >>> add(10.5, 5.5)
-        16.0
-        return a + b
-    """
-
-    return a + b
-```
-
-### 流程圖
-TODO
-
-### 工作分派與負責
-TODO
-
-### 資料結構與用途說明
-```
-README.md           專案說明與注意事項，使用markdown寫法
-main.py             應用程式執行入口點
-index.html          網站首頁
-scripts/            網頁前端功能
-    script.js       網頁前端功能
-stylesheets/        css樣式
-    application.css 整個網站共用的樣式   
-lib/                各種類別的程式
-    Api.py          提供HTTP呼叫API的快速方法
-```
+<!-- # 如何開始
+# 專案畫面與功能介紹
+# 安裝
+# 專案技術
+# 使用技術詳細說明
+# 聯絡作者 -->

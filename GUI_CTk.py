@@ -13,6 +13,35 @@ window.geometry("600x720")
 # 設置外觀模式 (可選 "System", "Dark", "Light")
 customtkinter.set_appearance_mode("System")  # 跟隨系統設置的深色/淺色模式
 
+appearance_mode = 0
+
+# 更新外觀模式
+def update_appearance_mode():
+    global appearance_mode
+    appearance_mode += 1
+    if(appearance_mode == 1) :
+        customtkinter.set_appearance_mode("Light")
+        appearance_btn.configure(text="淺色模式")
+    elif(appearance_mode == 2) :
+        customtkinter.set_appearance_mode("Dark")
+        appearance_btn.configure(text="深色模式")
+    else :
+        appearance_mode = 0
+        customtkinter.set_appearance_mode("System")
+        appearance_btn.configure(text="系統預設")
+
+
+# 外觀模式按鈕
+appearance_btn = customtkinter.CTkButton(
+    master=window,
+    height=25,
+    width=60, 
+    text="系統預設",
+    font=("Microsoft JhengHei", 14, "bold"),
+    command=update_appearance_mode
+    )
+appearance_btn.place(x=500, y=5)
+
 
 radio_var_price = IntVar()
 radio_var_areaA = IntVar()

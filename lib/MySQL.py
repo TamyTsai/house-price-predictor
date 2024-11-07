@@ -31,7 +31,8 @@ class MySQL:
     def query(self, sql, params=None):
         """
         執行查詢並返回結果
-        result = db.query("SELECT * FROM your_table WHERE column = %s", (value,))
+        with MySQL() as db:
+            result = db.query("SELECT * FROM lvr_lnd WHERE column = %s", (value,))
         """
         results = []
         if self.connection:
@@ -48,7 +49,8 @@ class MySQL:
     def delete(self, sql, params=None):
         """
         執行刪除操作並提交變更
-        db.delete("DELETE FROM your_table WHERE column = %s", (value,))
+        with MySQL() as db:
+            db.delete("DELETE FROM lvr_lnd WHERE column = %s", (value,))
         """
         if self.connection:
             try:
@@ -65,7 +67,8 @@ class MySQL:
     def insert(self, sql, params=None):
         """
         執行插入操作並提交變更
-        db.insert("INSERT INTO your_table (column1, column2) VALUES (%s, %s)", ("value1", "value2"))
+        with MySQL() as db:
+            db.insert("INSERT INTO lvr_lnd (column1, column2) VALUES (%s, %s)", ("value1", "value2"))
         """
         if self.connection:
             try:
@@ -75,6 +78,29 @@ class MySQL:
                 print(f"插入了 {cursor.rowcount} 筆資料")
             except Error as e:
                 print(f"插入失敗: {e}")
+                self.connection.rollback()
+            finally:
+                cursor.close()
+    
+    def insert_many(self, sql, params_list):
+        """
+        執行批次插入操作並提交變更
+        with MySQL() as db:
+            data_to_insert = [
+                ("value1", "value2"),
+                ("value3", "value4"),
+                ("value5", "value6")
+            ]
+            db.insert_many("INSERT INTO your_table (column1, column2) VALUES (%s, %s)", data_to_insert)
+        """
+        if self.connection:
+            try:
+                cursor = self.connection.cursor()
+                cursor.executemany(sql, params_list)
+                self.connection.commit()
+                print(f"批次插入了 {cursor.rowcount} 筆資料")
+            except Error as e:
+                print(f"批次插入失敗: {e}")
                 self.connection.rollback()
             finally:
                 cursor.close()
@@ -88,13 +114,3 @@ class MySQL:
         if self.connection and self.connection.is_connected():
             self.connection.close()
             print("資料庫連線已關閉")
-
-
-# 初始化類別並使用 with 語句來自動關閉連線
-with MySQL() as db:
-    # 執行查詢
-    result = db.query("SELECT * FROM lvr_lnd WHERE id = %s", (1,))
-    print(f"result: {result}")
-    
-    # 執行刪除
-    #db.delete("DELETE FROM your_table WHERE column = %s", (value,))

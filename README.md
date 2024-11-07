@@ -46,7 +46,15 @@ def add(a, b):
 TODO
 
 ### 工作分派與負責
-TODO
+GUI 介面 Mark
+房價預測模型 婷羽
+過濾數據（資料庫select相關語句）惠婷
+數據與處理（csv檔案彙整成要寫入資料庫格式）2魚
+資料庫連接與封裝方法 秉蒼
+報告簡報 Cindy
+報告 Cindy
+程式測試
+程式文件
 
 ### 資料結構與用途說明
 ```
@@ -60,3 +68,24 @@ stylesheets/        css樣式
 lib/                各種類別的程式
     Api.py          提供HTTP呼叫API的快速方法
 ```
+
+### 資料庫相關
+資料庫主機：162.241.253.231
+資料庫port：3306
+資料庫名稱： omeiliau_nou
+
+### 資料表與結構
+| csv檔案中的欄位名稱 | 資料庫欄位名稱 | 資料型別 | 預設值 | 備註                                |
+|------------------|--------------|---------|-------|------------------------------------|
+|                  | city_code    | string  |       | 縣市代號 （參照params.py的city字典Key）|
+|                  | city_name    | string  |       | 縣市名稱 （參照params.py的city字典Key）|
+|                  | town_code    | string  |       | 鄉鎮市區參照params.py的city字典key）   |
+| 鄉鎮市區          | town_name    | string   |       | 鄉鎮市區參照params.py的city字典value   |
+| 交易標地          |trade_sign    | int      |       |（房地 => 1 建物 => 2 土地=> 3 車位=>4, 房地+車位 => 5）|
+|土地位置建物門牌    |address        |strnig    |      |                                     |
+|交易年月日          | trade_date   | int      |       |                                    |
+|成交總價(元)        |price_total   | int      |      |                                     |
+|單價元平方公尺       | price_nuit   | int      |     |                                      |
+|建物移轉總面積平方公尺| total_area   | float     |     |                                     |
+| 編號              | code         | string    |     |                                     |
+| 屋齡              | age          | int       |  0  | 此處比較特特別，假測現在開啟的檔案是a_lvr_land_a.csv要取這份檔案中的「編號」欄位的值，然後到a_lvr_land_a_build.csv這份檔案對應的「編號」取得屋齡，如果是土地就沒有屋齡問題預設值為0|

@@ -79,8 +79,8 @@ lib/                各種類別的程式
 |------------------|--------------|---------|-------|------------------------------------|
 |                  | city_code    | string  |       | 縣市代號 （參照params.py的city字典Key）|
 |                  | city_name    | string  |       | 縣市名稱 （參照params.py的city字典Key）|
-|                  | town_code    | string  |       | 鄉鎮市區參照params.py的city字典key）   |
-| 鄉鎮市區          | town_name    | string   |       | 鄉鎮市區參照params.py的city字典value   |
+|                  | town_code    | string  |       | 鄉鎮市區參照params.py的town字典key）   |
+| 鄉鎮市區          | town_name    | string   |       | 鄉鎮市區參照params.py的town字典value   |
 | 交易標地          |trade_sign    | int      |       |（房地 => 1 建物 => 2 土地=> 3 車位=>4, 房地+車位 => 5）|
 |土地位置建物門牌    |address        |strnig    |      |                                     |
 |交易年月日          | trade_date   | int      |       |                                    |

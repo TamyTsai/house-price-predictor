@@ -47,7 +47,7 @@ gui_output_str = "最終輸出內容"
 # 鍵值表 (選單名稱與輸出值)
 # 縣市
 city_dict = {
-    "":"縣市",
+    "": "縣市　",
     "C":"基隆市",
     "A":"臺北市",
     "F":"新北市",
@@ -1713,7 +1713,7 @@ Title_1_info.place(x=10, y=30)
 background_frame_1 = customtkinter.CTkFrame(
     master=window,
     height=80,
-    width=550,
+    width=560,
     # 使用自適應色彩
     # bg_color="transparent",    
     # fg_color="#c8c8c8",
@@ -1739,25 +1739,25 @@ def update_town_options(selected_city):
 
 Class_1_optionMenu_1 = customtkinter.CTkOptionMenu(
     master=background_frame_1,
-    values=list(location_options.keys()),
+    values=list(city_dict.values()),
     font=("Microsoft JhengHei", 14),
-    height=50,
+    height=40,
     width=60,
     corner_radius=8,
     command=update_town_options  # 設定事件觸發函數
 )
-Class_1_optionMenu_1.place(x=10, y=15)
+Class_1_optionMenu_1.place(x=10, y=20)
 
 # 選單-鄉鎮市區
 Class_1_optionMenu_2 = customtkinter.CTkOptionMenu(
     master=background_frame_1,
     values=["鄉鎮市區"],
     font=("Microsoft JhengHei", 14),
-    height=50,
+    height=40,
     width=95,
     corner_radius=8,
 )
-Class_1_optionMenu_2.place(x=120, y=15)
+Class_1_optionMenu_2.place(x=110, y=20)
 
 # Class_1_checkbox 房屋
 Class_1_checkbox_1 = customtkinter.CTkCheckBox(
@@ -1767,9 +1767,9 @@ Class_1_checkbox_1 = customtkinter.CTkCheckBox(
     corner_radius=4,
     border_width=2,
     height=30,
-    width=60,
+    width=50,
 )
-Class_1_checkbox_1.place(x=280, y=10)
+Class_1_checkbox_1.place(x=230, y=10)
 
 # Class_1_checkbox 土地
 Class_1_checkbox_2 = customtkinter.CTkCheckBox(
@@ -1779,9 +1779,9 @@ Class_1_checkbox_2 = customtkinter.CTkCheckBox(
     corner_radius=4,
     border_width=2,
     height=30,
-    width=60,
+    width=50,
 )
-Class_1_checkbox_2.place(x=280, y=40)
+Class_1_checkbox_2.place(x=230, y=40)
 
 # Class_1_checkbox 建物
 Class_1_checkbox_3 = customtkinter.CTkCheckBox(
@@ -1791,9 +1791,9 @@ Class_1_checkbox_3 = customtkinter.CTkCheckBox(
     corner_radius=4,
     border_width=2,
     height=30,
-    width=60,
+    width=50,
 )
-Class_1_checkbox_3.place(x=350, y=10)
+Class_1_checkbox_3.place(x=295, y=10)
 
 # Class_1_checkbox 車位
 Class_1_checkbox_4 = customtkinter.CTkCheckBox(
@@ -1803,9 +1803,21 @@ Class_1_checkbox_4 = customtkinter.CTkCheckBox(
     corner_radius=4,
     border_width=2,
     height=30,
-    width=60,
+    width=50,
 )
-Class_1_checkbox_4.place(x=350, y=40)
+Class_1_checkbox_4.place(x=295, y=40)
+
+# Class_1_checkbox 選項5
+Class_1_checkbox_5 = customtkinter.CTkCheckBox(
+    master=background_frame_1,
+    text="選項\n5",
+    font=("Microsoft JhengHei", 14),
+    corner_radius=4,
+    border_width=2,
+    height=30,
+    width=50,
+)
+Class_1_checkbox_5.place(x=360, y=25)
 
 # Class_1_entry 門牌/社區名稱
 Class_1_entry = customtkinter.CTkEntry(
@@ -1817,14 +1829,14 @@ Class_1_entry = customtkinter.CTkEntry(
     border_width=2,
     corner_radius=6,
 )
-Class_1_entry.place(x=420, y=15)
+Class_1_entry.place(x=430, y=15)
 
 
 # 底色框 2 ======================================================================= 時間
 background_frame_2 = customtkinter.CTkFrame(
     master=window,
     height=80,
-    width=550,
+    width=560,
 )
 background_frame_2.place(x=20, y=160)
 
@@ -2086,7 +2098,7 @@ Class_4_entry_2.place(x=270, y=15)
 background_frame_5 = customtkinter.CTkFrame(
     master=window,
     height=60,
-    width=180,
+    width=190,
 )
 background_frame_5.place(x=390, y=250)
 

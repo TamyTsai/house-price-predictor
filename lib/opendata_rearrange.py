@@ -42,8 +42,6 @@ outputDir = f"{current_dir_path}\\..\\rearrange_data"
 if not os.path.exists(outputDir):
     os.makedirs(outputDir)
 
-# 放入要分類的data名稱, ex: data1, data2, ...data54
-
 
 # 創建A-Z資料夾
 for folder in keywords_to_folders.values():

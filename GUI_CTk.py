@@ -33,10 +33,10 @@ user_input_list = {
     "avg_var":"",               # int : 屋齡, 預設值：None, 必填：否
 
     # 計算部分 (我們自訂的)
-    "calculate_Y":"",           # int : 目標期間（年）
-    "calculate_M":"",           # int : 目標期間（月）
-    "calculate_unit":"",        # int : 面積單位（1 => M^2 ，2 => 坪）
-    "calculate_area":""         # int : 面積
+    "calculate_Y":"",           # int : 目標期間（年）, 必填：是
+    "calculate_M":"",           # int : 目標期間（月）, 必填：是
+    "calculate_unit":"",        # int : 面積單位（1 => M^2 ，2 => 坪）, 預設值：2(坪), 必填：是
+    "calculate_area":""         # int : 面積, 必填：是
 }
 
 # [I/O]最終計算結果(浮點數/整數)

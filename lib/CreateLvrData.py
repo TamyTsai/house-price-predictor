@@ -10,7 +10,26 @@ def getCsv(path, fileType, cityCode):
     cityCode = cityCode.upper()
     with open(path, mode='r', encoding='utf-8-sig') as file:
         # mapping表
-        map = {"鄉鎮市區": "town_name", "交易標的":"trade_sign", "土地位置建物門牌":"address", "交易年月日":"trade_date", "總價元":"price_total", "單價元平方公尺":"price_nuit", "編號":"code", "屋齡":"age"}
+        map = {
+            "鄉鎮市區": "town_name", 
+            "交易標的": "trade_sign", 
+            "土地位置建物門牌": "address", 
+            "交易年月日": "trade_date", 
+            "總價元": "price_total", 
+            "單價元平方公尺": "price_nuit", 
+            "建物移轉總面積平方公尺": "total_area",
+            "編號": "code", 
+            "屋齡": "age"
+        }
+        # 交易標地
+        tradeMap = {
+            "":0,
+            "房地(土地+建物)": 1,
+            "建物": 2,
+            "土地": 3,
+            "車位": 4,
+            "房地(土地+建物)+車位": 5
+        }
         # 使用字典方式讀取csv
         csv_reader = csv.DictReader(file)
         # 要返回的列表
@@ -26,6 +45,8 @@ def getCsv(path, fileType, cityCode):
                 if(key in map):
                     if map[key] == 'age':
                         result[map[key]] = (int(value) if value.isdigit() else 0)
+                    elif map[key] == 'trade_sign':
+                        result[map[key]] = tradeMap.get(value, 0)
                     else:
                         result[map[key]] = value
             

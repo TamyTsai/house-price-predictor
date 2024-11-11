@@ -100,7 +100,10 @@ def getData(outputModel = 1):
                 if outputModel == 1:
                     result.extend(main)
                 else:
-                    result[key.upper()] = main
+                    if key.upper() in result:
+                        result[key.upper()].extend(main)
+                    else:
+                        result[key.upper()] = main
             except ValueError as e:
                 print(f"檔案：{fileList[0]}, 發生異常{e}")
             except Exception as e:
@@ -108,7 +111,7 @@ def getData(outputModel = 1):
     return result
 
 # 可以分為兩中模式調用，outputType=0字典形式（會以縣市作為key） outputType=1串列形式
-outputType = 0
+outputType = 1
 result = getData(outputType)
 if outputType == 1:
     print(f"共{len(result)}行資料")

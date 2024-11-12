@@ -16,27 +16,27 @@ import customtkinter
 
 # [I/O]輸入資料表
 user_input_list = {
-    "city":"",                  # str : 縣市，預設值 : 第一筆的key, 必填：是
-    "town":"",                  # str : 鄉鎮市區, 預設值 : 第一筆的key, 必填：是
-    "ptype":"",                 # list : 1房地、2建物、3土地、4車位、5房地+車位， 預設值 : [1], 必填：是
-    "p_build":"",               # str : 門牌地址 : 預設值 : None, 必填：否
-    "p_startY":"",              # int : 交易期間（年起）101-113, 預設值 : 101, 必填：是
-    "p_startM":"",              # int : 交易期間（月起）1-12, 預設值 : 1, 必填：是
-    "p_endY":"",                # int : 交易期間（年迄）101-113, 預設值 : 113, , 必填：是
-    "p_endM":"",                # int : 交易期間（月迄）1-12, 預設值 : 12(若可以預設當前月份或12), 必填：是
-    "pmoney_unit":"",           # int : 單位（1 => 萬元 , 2 => 元）, 預設值：1, 必填：是
-    "minp":"",                  # int : 最小值(單價), 預設值：None, 必填：否
-    "maxp":"",                  # int : 最大值（單價）, 預設值：None, 必填：否
-    "unit":"",                  # int : 面積單位（1 => M^2 ，2 => 坪）, 預設值：2, 必填：是
-    "mins":"",                  # int : 最小值（坪數）, 預設值：None, 必填：否
-    "maxs":"",                  # int : 最大值（坪數）, 預設值：None, 必填：否
-    "avg_var":"",               # int : 屋齡, 預設值：None, 必填：否
+    "city":"",                  # str :     縣市,                                       必填：是 (預設:第一筆的key)
+    "town":"",                  # str :     鄉鎮市區,                                   必填：是 (預設:第一筆的key)
+    "ptype":[],                 # list :    1房地、2建物、3土地、4車位、5房地+車位,       必填：是 (預設:[1])
+    "p_build": None,            # str :     門牌地址 :                                  必填：否 (預設:)
+    "p_startY": None,           # int :     交易期間（年起）101-113,                     必填：是 (預設:101)
+    "p_startM": None,           # int :     交易期間（月起）1-12,                        必填：是 (預設:1)
+    "p_endY": None,             # int :     交易期間（年迄）101-113,                     必填：是 (預設:113)
+    "p_endM": None,             # int :     交易期間（月迄）1-12,                        必填：是 (預設:12)
+    "pmoney_unit": None,        # int :     單位（1 => 萬元 , 2 => 元)                   必填：是 (預設:1)
+    "minp": None,               # int :     最小值(單價),                                必填：否 (預設:)
+    "maxp": None,               # int :     最大值（單價）,                              必填：否 (預設:)
+    "unit": None,               # int :     面積單位（1 => M^2 ，2 => 坪）,              必填：是 (預設:2)
+    "mins": None,               # int :     最小值（坪數）,                              必填：否 (預設:)
+    "maxs": None,               # int :     最大值（坪數）,                              必填：否 (預設:)
+    "avg_var": None,            # int :     屋齡,                                       必填：否 (預設:)
 
     # 計算部分 (我們自訂的)
-    "calculate_Y":"",           # int : 目標期間（年）, 必填：是
-    "calculate_M":"",           # int : 目標期間（月）, 必填：是
-    "calculate_unit":"",        # int : 面積單位（1 => M^2 ，2 => 坪）, 預設值：2(坪), 必填：是
-    "calculate_area":""         # int : 面積, 必填：是
+    "calculate_Y": None,        # int :     目標期間（年）,                          必填：是 (預設:)
+    "calculate_M": None,        # int :     目標期間（月）,                          必填：是 (預設:)
+    "calculate_unit": None,     # int :     面積單位（1 => M^2 ，2 => 坪）,          必填：是 (預設:2)
+    "calculate_area": None      # int :     面積,                                    必填：是 (預設:)
 }
 
 # [I/O]最終計算結果(浮點數/整數)
@@ -47,7 +47,7 @@ gui_output_str = "最終輸出內容"
 # 鍵值表 (選單名稱與輸出值)
 # 縣市
 city_dict = {
-    "": "縣市　",
+    None: "縣市　",
     "C":"基隆市",
     "A":"臺北市",
     "F":"新北市",
@@ -75,6 +75,7 @@ city_dict = {
 
 # 行政區
 town_dict = {
+    None:[{"code": None,"title": "鄉鎮市區"}],
     "C":[
         {
             "code": "C02",
@@ -1584,11 +1585,13 @@ town_dict = {
 
 # 通用年/月
 year_dict = { 
+    None:"年",
     101:"101年", 102:"102年", 103:"103年", 104:"104年", 105:"105年", 106:"106年", 107:"107年", 
     108:"108年", 109:"109年", 110:"110年", 111:"111年", 112:"112年", 113:"113年" 
 }
 
 mon_dict = { 
+    None:"月",
     1:"1月", 2:"2月", 3:"3月", 4:"4月", 5:"5月", 6:"6月", 
     7:"7月", 8:"8月", 9:"9月", 10:"10月", 11:"11月", 12:"12月" 
 }
@@ -1596,6 +1599,7 @@ mon_dict = {
 
 # 目標年 (我只抓10年)
 target_year_dict = {
+    None:"目標年",
     114:"114年", 115:"115年", 116:"116年", 117:"117年", 118:"118年", 
     119:"119年", 120:"120年", 121:"121年", 122:"122年", 123:"123年"
 }
@@ -1603,13 +1607,13 @@ target_year_dict = {
 
 # 屋齡
 age_dict = {
-    "None": "不拘",         # 需轉換為 None (空)
-    ",5": "5年以下",
-    "5,10": "5~10年",
-    "10,20": "10~20年",
-    "20,30": "20~30年",
-    "30,40": "30~40年",
-    "40,": "40年以上",
+    None: "不拘",
+    1 : "5年以下",
+    2 : "5~10年",
+    3 : "10~20年",
+    4 : "20~30年",
+    5 : "30~40年",
+    6 : "40年以上",
 }
 
 
@@ -1630,8 +1634,65 @@ def get_selected_key(selected_value, lookup_dict, code):
     for key, value in lookup_dict.items():
         if value == selected_value:
             user_input_list[code] = key
-            print(f"user_input_list.{code}: {user_input_list[code]}")  # 可以改為其他動作，如儲存或顯示
+            print(f"user_input_list.{code}: {user_input_list[code]}")
+            return user_input_list[code]
+            
 
+# 通用回調函數 2，直接將回傳值匯入 user_input_list
+def return_selected_key(return_value, code):
+    global user_input_list
+
+    # 如果為 CheckBox，則回傳列表並附加到指定的 code 鍵中
+    if code == "ptype":
+        if code not in user_input_list:
+            user_input_list[code] = []  # 初始化為列表
+        
+        # 避免重複添加
+        if return_value not in user_input_list[code]:
+            user_input_list[code].append(return_value)
+        else:
+            # 若已存在於列表中，表示取消選擇，則移除該值
+            user_input_list[code].remove(return_value)
+
+    # 如果為 RadioButton，則回傳單一正整數，更新指定 code 的值
+    else:
+        user_input_list[code] = return_value
+
+    print(f"user_input_list[{code}]: {user_input_list[code]}")
+
+
+# 通用輸入，直接將回傳值匯入 user_input_list
+def entry_update(entry_value, code):
+    global user_input_list
+
+    user_input_list[code] = entry_value
+    print(f"user_input_list[{code}]: {user_input_list[code]}")
+    return True
+
+
+# 整數的通用輸入，直接將回傳值匯入 user_input_list
+def validate_and_update(entry_value, code):
+    global user_input_list
+    if entry_value.isdigit() and int(entry_value) > 0:
+        # 更新正整數值至 user_input_list[code]
+        user_input_list[code] = int(entry_value)
+        print(f"user_input_list[{code}]: {user_input_list[code]}")
+        return True
+    elif entry_value == "":
+        # 允許清空輸入
+        user_input_list[code] = None
+        return True
+    else:
+        # 非正整數則阻止顯示
+        return False
+
+
+
+# 生成結果按鈕(一階判斷)
+def on_output_button():
+    if user_input_list["p_build"] == "門牌/社區名稱" :
+        user_input_list["p_build"] = None
+    print(user_input_list)
 
 # 視窗控制 及 物件列表 =======================================================================================================
 
@@ -1721,30 +1782,43 @@ background_frame_1 = customtkinter.CTkFrame(
 )
 background_frame_1.place(x=20, y=60)
 
-# 定義縣市與鄉鎮市區選項資料
-location_options = {
-    "選項1": ["鄉鎮1-1", "鄉鎮1-2", "鄉鎮1-3"],
-    "選項2": ["鄉鎮2-1", "鄉鎮2-2"],
-    "選項3": ["鄉鎮3-1", "鄉鎮3-2", "鄉鎮3-3", "鄉鎮3-4"]
-}
-
 # 選單-縣市
 def update_town_options(selected_city):
-    # 根據選擇的縣市更新鄉鎮市區選單
-    new_options = location_options.get(selected_city, [])
-    Class_1_optionMenu_2.configure(values=new_options)
-    if new_options:
-        Class_1_optionMenu_2.set(new_options[0])  # 預設選擇第一個鄉鎮市區
+    # 使用通用回調函數獲取 code
+    city_code=get_selected_key(selected_city, city_dict, code="city")
+    print(f"\n目前選擇縣市:{selected_city},code = {city_code}")
+
+    # 取得對應城市代碼的資料
+    options = town_dict.get(city_code, [])
+    
+    # 提取 title 為顯示值，code 為回傳值
+    display_values = [item["title"] for item in options]
+    code_values = [item["code"] for item in options]
+    
+    # 更新 option_menu 的值
+    Class_1_optionMenu_2.configure(values=display_values)
+    Class_1_optionMenu_2.set(display_values[0])  # 預設選擇第一個鄉鎮市區
+    user_input_list["town"] = code_values[0]
+    print(f"user_input_list.town(選單預設): {user_input_list["town"]}")
+    
+    # 設置選項回調函數，根據 title 回傳 code
+    def on_option_selected(choice):
+        index = display_values.index(choice)  # 取得選擇的索引
+        selected_code = code_values[index]  # 根據索引獲取對應的 code
+        user_input_list["town"] = selected_code
+        print(f"user_input_list.town: {user_input_list["town"]}")
+
+    Class_1_optionMenu_2.configure(command=on_option_selected)
 
 
 Class_1_optionMenu_1 = customtkinter.CTkOptionMenu(
     master=background_frame_1,
     values=list(city_dict.values()),
+    command=update_town_options,
     font=("Microsoft JhengHei", 14),
     height=40,
     width=60,
     corner_radius=8,
-    command=update_town_options  # 設定事件觸發函數
 )
 Class_1_optionMenu_1.place(x=10, y=20)
 
@@ -1759,7 +1833,7 @@ Class_1_optionMenu_2 = customtkinter.CTkOptionMenu(
 )
 Class_1_optionMenu_2.place(x=110, y=20)
 
-# Class_1_checkbox 房屋
+# Class_1_checkbox 房屋=1
 Class_1_checkbox_1 = customtkinter.CTkCheckBox(
     master=background_frame_1,
     text="房屋",
@@ -1768,10 +1842,11 @@ Class_1_checkbox_1 = customtkinter.CTkCheckBox(
     border_width=2,
     height=30,
     width=50,
+    command=partial(return_selected_key, return_value=1, code="ptype"),
 )
 Class_1_checkbox_1.place(x=230, y=10)
 
-# Class_1_checkbox 土地
+# Class_1_checkbox 土地=2
 Class_1_checkbox_2 = customtkinter.CTkCheckBox(
     master=background_frame_1,
     text="土地",
@@ -1780,10 +1855,11 @@ Class_1_checkbox_2 = customtkinter.CTkCheckBox(
     border_width=2,
     height=30,
     width=50,
+    command=partial(return_selected_key, return_value=2, code="ptype"),
 )
 Class_1_checkbox_2.place(x=230, y=40)
 
-# Class_1_checkbox 建物
+# Class_1_checkbox 建物=3
 Class_1_checkbox_3 = customtkinter.CTkCheckBox(
     master=background_frame_1,
     text="建物",
@@ -1792,10 +1868,11 @@ Class_1_checkbox_3 = customtkinter.CTkCheckBox(
     border_width=2,
     height=30,
     width=50,
+    command=partial(return_selected_key, return_value=3, code="ptype"),
 )
 Class_1_checkbox_3.place(x=295, y=10)
 
-# Class_1_checkbox 車位
+# Class_1_checkbox 車位=4
 Class_1_checkbox_4 = customtkinter.CTkCheckBox(
     master=background_frame_1,
     text="車位",
@@ -1804,22 +1881,26 @@ Class_1_checkbox_4 = customtkinter.CTkCheckBox(
     border_width=2,
     height=30,
     width=50,
+    command=partial(return_selected_key, return_value=4, code="ptype"),
 )
 Class_1_checkbox_4.place(x=295, y=40)
 
-# Class_1_checkbox 選項5
+# Class_1_checkbox 房地+車位=5
 Class_1_checkbox_5 = customtkinter.CTkCheckBox(
     master=background_frame_1,
-    text="選項\n5",
+    text="房地\n +\n車位",
     font=("Microsoft JhengHei", 14),
     corner_radius=4,
     border_width=2,
-    height=30,
+    height=50,
     width=50,
+    command=partial(return_selected_key, return_value=5, code="ptype"),
 )
-Class_1_checkbox_5.place(x=360, y=25)
+Class_1_checkbox_5.place(x=360, y=15)
 
 # Class_1_entry 門牌/社區名稱
+validate_command_code0 = (window.register(partial(entry_update, code="p_build")), '%P')
+
 Class_1_entry = customtkinter.CTkEntry(
     master=background_frame_1,
     placeholder_text="門牌/社區名稱",
@@ -1828,6 +1909,8 @@ Class_1_entry = customtkinter.CTkEntry(
     width=120,
     border_width=2,
     corner_radius=6,
+    validate="key", 
+    validatecommand=validate_command_code0
 )
 Class_1_entry.place(x=430, y=15)
 
@@ -1957,7 +2040,7 @@ Class_3_title = customtkinter.CTkLabel(
     )
 Class_3_title.place(x=5, y=10)
 
-# Class_3_radioButton 萬元
+# Class_3_radioButton 萬元=1
 Class_3_radioButton_1 = customtkinter.CTkRadioButton(
     master=background_frame_3,
     variable=radio_var_price,
@@ -1966,10 +2049,11 @@ Class_3_radioButton_1 = customtkinter.CTkRadioButton(
     font=("Microsoft JhengHei", 14),
     height=20,
     width=40,
+    command=partial(return_selected_key, return_value=1, code="pmoney_unit"),
     )
 Class_3_radioButton_1.place(x=70, y=5)
 
-# Class_3_radioButton 元
+# Class_3_radioButton 元=2
 Class_3_radioButton_2 = customtkinter.CTkRadioButton(
     master=background_frame_3,
     variable=radio_var_price,
@@ -1978,10 +2062,13 @@ Class_3_radioButton_2 = customtkinter.CTkRadioButton(
     font=("Microsoft JhengHei", 14),
     height=20,
     width=40,
+    command=partial(return_selected_key, return_value=2, code="pmoney_unit"),
     )
 Class_3_radioButton_2.place(x=70, y=35)
 
 # Class_3_entry 最小
+validate_command_code1 = (window.register(partial(validate_and_update, code="minp")), '%P')
+
 Class_3_entry_1 = customtkinter.CTkEntry(
     master=background_frame_3,
     placeholder_text="最小",
@@ -1990,6 +2077,8 @@ Class_3_entry_1 = customtkinter.CTkEntry(
     width=80,
     border_width=2,
     corner_radius=6,
+    validate="key", 
+    validatecommand=validate_command_code1
     )
 Class_3_entry_1.place(x=150, y=15)
 
@@ -2005,6 +2094,8 @@ Class_3_label = customtkinter.CTkLabel(
 Class_3_label.place(x=240, y=15)
 
 # Class_3_entry 最大
+validate_command_code2 = (window.register(partial(validate_and_update, code="maxp")), '%P')
+
 Class_3_entry_2 = customtkinter.CTkEntry(
     master=background_frame_3,
     placeholder_text="最大",
@@ -2013,6 +2104,8 @@ Class_3_entry_2 = customtkinter.CTkEntry(
     width=80,
     border_width=2,
     corner_radius=6,
+    validate="key", 
+    validatecommand=validate_command_code2
     )
 Class_3_entry_2.place(x=270, y=15)
 
@@ -2035,7 +2128,7 @@ Class_4_title = customtkinter.CTkLabel(
     )
 Class_4_title.place(x=5, y=10)
 
-# Class_4_radioButton 平方米 M^2
+# Class_4_radioButton 平方米 M^2 = 1
 Class_4_radioButton_1 = customtkinter.CTkRadioButton(
     master=background_frame_4,
     variable=radio_var_areaA,
@@ -2044,10 +2137,11 @@ Class_4_radioButton_1 = customtkinter.CTkRadioButton(
     font=("Microsoft JhengHei", 14),
     height=20,
     width=60,
+    command=partial(return_selected_key, return_value=1, code="unit"),
     )
 Class_4_radioButton_1.place(x=70, y=5)
 
-# Class_4_radioButton 坪
+# Class_4_radioButton 坪 = 2
 Class_4_radioButton_2 = customtkinter.CTkRadioButton(
     master=background_frame_4,
     variable=radio_var_areaA,
@@ -2056,10 +2150,13 @@ Class_4_radioButton_2 = customtkinter.CTkRadioButton(
     font=("Microsoft JhengHei", 14),
     height=20,
     width=60,
+    command=partial(return_selected_key, return_value=2, code="unit"),
     )
 Class_4_radioButton_2.place(x=70, y=35)
 
 # Class_4_entry 最小
+validate_command_code3 = (window.register(partial(validate_and_update, code="mins")), '%P')
+
 Class_4_entry_1 = customtkinter.CTkEntry(
     master=background_frame_4,
     placeholder_text="最小",
@@ -2068,6 +2165,8 @@ Class_4_entry_1 = customtkinter.CTkEntry(
     width=80,
     border_width=2,
     corner_radius=6,
+    validate="key", 
+    validatecommand=validate_command_code3
     )
 Class_4_entry_1.place(x=150, y=15)
 
@@ -2083,6 +2182,8 @@ Class_4_label = customtkinter.CTkLabel(
 Class_4_label.place(x=240, y=15)
 
 # Class_4_entry 最大
+validate_command_code4 = (window.register(partial(validate_and_update, code="maxs")), '%P')
+
 Class_4_entry_2 = customtkinter.CTkEntry(
     master=background_frame_4,
     placeholder_text="最大",
@@ -2091,6 +2192,8 @@ Class_4_entry_2 = customtkinter.CTkEntry(
     width=80,
     border_width=2,
     corner_radius=6,
+    validate="key", 
+    validatecommand=validate_command_code4
     )
 Class_4_entry_2.place(x=270, y=15)
 
@@ -2170,7 +2273,7 @@ Class_6_optionMenu_year = customtkinter.CTkOptionMenu(
     width=80,
     corner_radius=6,
     )
-Class_6_optionMenu_year.place(x=90, y=10)
+Class_6_optionMenu_year.place(x=70, y=10)
 
 # Class_6_label_1
 Class_6_label_1 = customtkinter.CTkLabel(
@@ -2215,7 +2318,7 @@ Class_7_title = customtkinter.CTkLabel(
     )
 Class_7_title.place(x=5, y=10)
 
-# 選項-M^2
+# 選項-M^2 = 1
 Class_7_radioButton_1 = customtkinter.CTkRadioButton(
     master=background_frame_7,
     variable=radio_var_areaB,
@@ -2224,10 +2327,11 @@ Class_7_radioButton_1 = customtkinter.CTkRadioButton(
     font=("Microsoft JhengHei", 14),
     height=20,
     width=60,
+    command=partial(return_selected_key, return_value=1, code="calculate_unit"),
     )
 Class_7_radioButton_1.place(x=80, y=5)
 
-# 選項-坪
+# 選項-坪 = 2
 Class_7_radioButton_2 = customtkinter.CTkRadioButton(
     master=background_frame_7,
     variable=radio_var_areaB,
@@ -2236,10 +2340,13 @@ Class_7_radioButton_2 = customtkinter.CTkRadioButton(
     font=("Microsoft JhengHei", 14),
     height=20,
     width=60,
+    command=partial(return_selected_key, return_value=2, code="calculate_unit"),
     )
 Class_7_radioButton_2.place(x=80, y=35)
 
 # 輸入面積
+validate_command_code5 = (window.register(partial(validate_and_update, code="calculate_area")), '%P')
+
 Class_7_entry = customtkinter.CTkEntry(
     master=background_frame_7,
     placeholder_text="輸入面積",
@@ -2248,6 +2355,8 @@ Class_7_entry = customtkinter.CTkEntry(
     width=120,
     border_width=2,
     corner_radius=6,
+    validate="key", 
+    validatecommand=validate_command_code5
     )
 Class_7_entry.place(x=180, y=10)
 
@@ -2265,6 +2374,7 @@ Output_button = customtkinter.CTkButton(
     width=140,
     border_width=2,
     corner_radius=6,
+    command=on_output_button,
     )
 Output_button.place(x=230, y=580)
 

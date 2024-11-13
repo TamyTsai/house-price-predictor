@@ -6,14 +6,20 @@ import customtkinter
 
 
 ##########################################################################################################################
-
-############################################### 負責其他區塊的請注意看到這裡 ###############################################
-
+###                                                                                                                    ###
+###                                             負責其他區塊的請注意看到這裡                                             ###
+###                                                                                                                    ###
 ##########################################################################################################################
 
+# 輸入/輸出 串接函式 ======================================================================================================
+def input_io_call(dict):
+    print(dict)
+    
+    # 一律回傳 萬元/每單位面積。 須注意單位為何 "calculate_unit" （1 => M^2 ，2 => 坪）
+    return 49.9
 
-# I/O 、 處理函式 及 變數部分 =================================================================================================
 
+# I/O 、 處理函式 及 變數部分 =============================================================================================
 # [I/O]輸入資料表
 user_input_list = {
     "city":"",                  # str :     縣市,                                       必填：是 (預設:第一筆的key)
@@ -39,12 +45,8 @@ user_input_list = {
     "calculate_area": None      # int :     面積,                                    必填：是 (預設:)
 }
 
-# [I/O]最終計算結果(浮點數/整數)
-gui_output_float = 0
-gui_output_str = "最終輸出內容"
 
-
-# 鍵值表 (選單名稱與輸出值)
+# 資料型態-鍵值表 (選單名稱與輸出值) =======================================================================================
 # 縣市
 city_dict = {
     None: "縣市　",
@@ -1618,13 +1620,11 @@ age_dict = {
 
 
 
-
 ##########################################################################################################################
-
-############################################### 負責其他區塊的只需要看到這裡 ###############################################
-
+###                                                                                                                    ###
+###                                             負責其他區塊的只需要看到這裡                                             ###
+###                                                                                                                    ###
 ##########################################################################################################################
-
 
 
 
@@ -1634,7 +1634,7 @@ def get_selected_key(selected_value, lookup_dict, code):
     for key, value in lookup_dict.items():
         if value == selected_value:
             user_input_list[code] = key
-            print(f"user_input_list.{code}: {user_input_list[code]}")
+            print(f"[GUI]user_input_list.{code}: {user_input_list[code]}")
             return user_input_list[code]
             
 
@@ -1658,7 +1658,7 @@ def return_selected_key(return_value, code):
     else:
         user_input_list[code] = return_value
 
-    print(f"user_input_list[{code}]: {user_input_list[code]}")
+    print(f"[GUI]user_input_list[{code}]: {user_input_list[code]}")
 
 
 # 通用輸入，直接將回傳值匯入 user_input_list
@@ -1666,7 +1666,7 @@ def entry_update(entry_value, code):
     global user_input_list
 
     user_input_list[code] = entry_value
-    print(f"user_input_list[{code}]: {user_input_list[code]}")
+    print(f"[GUI]user_input_list[{code}]: {user_input_list[code]}")
     return True
 
 
@@ -1676,7 +1676,7 @@ def validate_and_update(entry_value, code):
     if entry_value.isdigit() and int(entry_value) > 0:
         # 更新正整數值至 user_input_list[code]
         user_input_list[code] = int(entry_value)
-        print(f"user_input_list[{code}]: {user_input_list[code]}")
+        print(f"[GUI]user_input_list[{code}]: {user_input_list[code]}")
         return True
     elif entry_value == "":
         # 允許清空輸入
@@ -1690,9 +1690,109 @@ def validate_and_update(entry_value, code):
 
 # 生成結果按鈕(一階判斷)
 def on_output_button():
-    if user_input_list["p_build"] == "門牌/社區名稱" :
+    print("\n[GUI]開始檢查輸入資料表:")
+    can_output = True
+    warning_text = "警告: "
+
+    # 縣市
+    if user_input_list["city"] == "" or user_input_list["city"] == None :
+        print("[GUI]警告! <city>項目為空! 該項目為必填!")
+        can_output = False
+        warning_text += "縣市、"
+
+    # 鄉鎮市區
+    if user_input_list["town"] == "" or user_input_list["town"] == None :
+        print("[GUI]警告! <town>項目為空! 該項目為必填!")
+        can_output = False
+        warning_text += "鄉鎮市區、"
+
+    # 類型
+    if user_input_list["ptype"] == [] :
+        print("[GUI]警告! <ptype>項目為空! 指定為預設值<[1]>")
+        user_input_list["ptype"] = [1]
+        Class_1_checkbox_1.select()
+
+    # 門牌/社區名稱
+    if user_input_list["p_build"] == "門牌/社區名稱" :  # 清除預設顯示文字
         user_input_list["p_build"] = None
-    print(user_input_list)
+
+    # 起始年月~結束年月
+    if user_input_list["p_startY"] == None :
+        print("[GUI]警告! <p_startY>項目為空! 指定為預設值<101>")
+        user_input_list["p_startY"] = 101
+        Class_2_optionMenu_year1.set("101年")
+        
+    if user_input_list["p_startM"] == None :
+        print("[GUI]警告! <p_startM>項目為空! 指定為預設值<1>")
+        user_input_list["p_startM"] = 1
+        Class_2_optionMenu_mon1.set("1月")
+        
+    if user_input_list["p_endY"] == None :
+        print("[GUI]警告! <p_endY>項目為空! 指定為預設值<113>")
+        user_input_list["p_endY"] = 113
+        Class_2_optionMenu_year2.set("113年")
+        
+    if user_input_list["p_endM"] == None :
+        print("[GUI]警告! <p_endM>項目為空! 指定為預設值<12>")
+        user_input_list["p_endM"] = 12
+        Class_2_optionMenu_mon2.set("12月")
+
+    # 單位
+    if user_input_list["pmoney_unit"] == None :
+        print("[GUI]警告! <pmoney_unit>項目為空! 指定為預設值<1>")
+        user_input_list["pmoney_unit"] = 1
+        Class_3_radioButton_1.select()
+
+    # 面積單位
+    if user_input_list["unit"] == None :
+        print("[GUI]警告! <unit>項目為空! 指定為預設值<2>")
+        user_input_list["unit"] = 2
+        Class_4_radioButton_2.select()
+
+    # 目標期間（年月）
+    if user_input_list["calculate_Y"] == "" or user_input_list["calculate_Y"] == None :
+        print("[GUI]警告! <calculate_Y>項目為空! 該項目為必填!")
+        can_output = False
+        warning_text += "目標期間(年)、"
+        
+    if user_input_list["calculate_M"] == "" or user_input_list["calculate_M"] == None :
+        print("[GUI]警告! <calculate_M>項目為空! 該項目為必填!")
+        can_output = False
+        warning_text += "目標期間(月)、"
+
+    # 目標面積單位
+    if user_input_list["calculate_unit"] == None :
+        print("[GUI]警告! <calculate_unit>項目為空! 指定為預設值<2>")
+        user_input_list["calculate_unit"] = 2
+        Class_7_radioButton_2.select()
+    
+
+    # 輸出警告文字或調用計算函數
+    if(can_output == True):
+        print("輸入正確，調用計算函數")
+        gui_output_float = input_io_call(user_input_list)
+
+        if (user_input_list["calculate_area"] == None or user_input_list["calculate_area"] == 0):
+        # 輸入值無面積時，返回 萬元/坪(or 平方米)
+            if(user_input_list["calculate_unit"] == 2):     # 單位:坪
+                output_text = f"預期價格: {gui_output_float}萬元/坪"
+            elif(user_input_list["calculate_unit"] == 1):   # 單位:平方米
+                output_text = f"預期價格: {gui_output_float}萬元/平方米"
+            else:
+                print("[GUI]錯誤! 未定義的單位")
+        else:
+        # 輸入值有面積時，返回 總價-萬元
+            output_text = f"預期價格: {gui_output_float * user_input_list["calculate_area"]}萬元"
+        
+        Output_label.configure(text=output_text, text_color="#5555FF")
+
+    else:
+        # 找到最後一個 "、" 並替換為 " 為必填項目!"
+        warning_text = warning_text[::-1].replace("、", "!目項填必為 ", 1)[::-1]
+        Output_label.configure(text=warning_text, text_color="#CC0000")
+    
+
+
 
 # 視窗控制 及 物件列表 =======================================================================================================
 
@@ -1799,14 +1899,14 @@ def update_town_options(selected_city):
     Class_1_optionMenu_2.configure(values=display_values)
     Class_1_optionMenu_2.set(display_values[0])  # 預設選擇第一個鄉鎮市區
     user_input_list["town"] = code_values[0]
-    print(f"user_input_list.town(選單預設): {user_input_list["town"]}")
+    print(f"[GUI]user_input_list.town(選單預設): {user_input_list["town"]}")
     
     # 設置選項回調函數，根據 title 回傳 code
     def on_option_selected(choice):
         index = display_values.index(choice)  # 取得選擇的索引
         selected_code = code_values[index]  # 根據索引獲取對應的 code
         user_input_list["town"] = selected_code
-        print(f"user_input_list.town: {user_input_list["town"]}")
+        print(f"[GUI]user_input_list.town: {user_input_list["town"]}")
 
     Class_1_optionMenu_2.configure(command=on_option_selected)
 

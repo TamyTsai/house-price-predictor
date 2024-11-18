@@ -3,10 +3,60 @@
 專案用途與說明 TODO，
 <a href="https://nou.tronclass.com.tw/course/54317/group-set#/topics/66121?show_sidebar=false&scrollTo=topic-66121&groupId=9086&pageIndex=1&pageCount=1&topicIds=66121,65692&predicate=lastUpdatedDate&reverse">當前提案（房價預測器）</a>
 
+-
 ### 分支管理
 採用<a href="https://gitbook.tw/chapters/gitflow/why-need-git-flow">gitflow</a>管理方式，主要目的在開發階段採用分支來進行個人的執行事項．待完成後再合併回developer分支，最終穩定版本使用main分支，git UI介面可以使用 <a href="https://www.sourcetreeapp.com/">sourcetree</a>
 
+
 <a href="https://gitbook.tw/chapters/gitflow/using-git-flow">在sourcetree使用git flow</a>
+
+-
+### 分支 GUI
+by Mark ;
+
+套件: functools.partial、tkinter、customtkinter ;
+
+進度: 基本排版/字型/樣式、淺色/深色模式樣式適應+切換按鈕、事件系統、例外處理/輸入檢查;
+
+待辦: 串接、跨平台適應
+
++
+
+11/08
+
+事件系統: 年/月 選擇部分皆已完成
+
+增加 user_input_list 字典，用於存放使用者輸入
+
+增加 user_input_list {
+
+"calculate_Y":"",           # int : 目標期間（年）
+
+"calculate_M":"",           # int : 目標期間（月）
+
+"calculate_unit":"",        # int : 面積單位（1 => M^2 ，2 => 坪）
+
+"calculate_area":""         # int : 面積
+
+}
+
+用於存放計算目標變數
+
+增加 target_year_dict 計算目標(年) 的選單 (我只抓10年)
+
++
+
+11/13
+
+事件系統完成
+
+型別限制完成
+
+修改 avg_var 的 code 型態
+
+修改檔名(GUI_CTk --> GUI)
+
+-
 
 ### 運行環境與依賴套件
 ```
@@ -17,6 +67,7 @@ Beautifulsoup4  網路爬蟲取得的資料解析
 tkinter         UI介面處理(未定)
 ```
 
+-
 ### 註解格式
 依循 PEP 257
 ``` python
@@ -42,9 +93,11 @@ def add(a, b):
     return a + b
 ```
 
+-
 ### 流程圖
 TODO
 
+-
 ### 工作分派與負責
 GUI 介面 Mark
 房價預測模型 婷羽
@@ -56,6 +109,7 @@ GUI 介面 Mark
 程式測試
 程式文件
 
+-
 ### 資料結構與用途說明
 ```
 README.md           專案說明與注意事項，使用markdown寫法
@@ -68,7 +122,6 @@ stylesheets/        css樣式
 lib/                各種類別的程式
     Api.py          提供HTTP呼叫API的快速方法
 ```
-
 ### 資料庫相關
 資料庫主機：162.241.253.231
 資料庫port：3306

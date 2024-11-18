@@ -1,7 +1,7 @@
 import csv
 import os
 import params
-import MySQL
+from MySQL import MySQL
 class CreateLvrData:
 
     def getCsv(self, path, fileType, cityCode):
@@ -161,5 +161,3 @@ class CreateLvrData:
                     db.insert_many(" ".join(sql), data_to_insert)
                     data_to_insert = []  # 清空資料，為下一批次做準備
                     print(f"已批次寫入資料：第 {idx // row + 1} 批")
-     
-CreateLvrData().insertSQL()

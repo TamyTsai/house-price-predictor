@@ -3,8 +3,10 @@
 from functools import partial
 from tkinter import *
 import customtkinter
+'''
 from lib.MySQL import MySQL
 from Select import Select
+'''
 
 ##########################################################################################################################
 ###                                                                                                                    ###
@@ -14,17 +16,21 @@ from Select import Select
 
 # 輸入/輸出 串接函式 ======================================================================================================
 def input_io_call(dict):
+    print(dict)
+    
+    # 一律回傳 萬元/每單位面積。 須注意單位為何 "calculate_unit" （1 => M^2 ，2 => 坪）
+    return 49.9
+
+'''
     with MySQL() as db:
+        print("")
         #queryBuilder =  Select().createQuery(dict)
         #print(queryBuilder)
         #result = db.query("SELECT count(*) as ROWS FROM lvr_lnd WHERE city_code = %s and town_code = %s", (dict["city"], dict["town"]))
         #count = result[0].get("ROWS", 0) if result else {}
         #print(f"共查詢到了 {count}筆資料")
+'''
     
-    print(dict)
-    
-    # 一律回傳 萬元/每單位面積。 須注意單位為何 "calculate_unit" （1 => M^2 ，2 => 坪）
-    return 49.9
 
 
 # I/O 、 處理函式 及 變數部分 =============================================================================================
@@ -1700,6 +1706,7 @@ def validate_and_update(entry_value, code):
 def on_output_button():
     print("\n[GUI]開始檢查輸入資料表:")
     can_output = True
+    wrong_time_range = False
     warning_text = "警告: "
 
     # 縣市
@@ -1744,6 +1751,17 @@ def on_output_button():
         print("[GUI]警告! <p_endM>項目為空! 指定為預設值<12>")
         user_input_list["p_endM"] = 12
         Class_2_optionMenu_mon2.set("12月")
+
+    # 起訖限制
+    if user_input_list["p_startY"] > user_input_list["p_endY"] :
+        print("[GUI]警告! <p_startY>大於<p_endY>")
+        can_output = False
+        wrong_time_range = True
+        
+    if user_input_list["p_startY"] == user_input_list["p_endY"] and user_input_list["p_startM"] > user_input_list["p_endM"]:
+        print("[GUI]警告! <p_startM>大於<p_endM>")
+        can_output = False
+        wrong_time_range = True
 
     # 單位
     if user_input_list["pmoney_unit"] == None :
@@ -1794,9 +1812,17 @@ def on_output_button():
         
         Output_label.configure(text=output_text, text_color="#5555FF")
 
+    # 僅有起訖時間範圍錯誤
+    elif (warning_text == "警告: " and wrong_time_range == True):
+        warning_text = "警告: 起訖時間範圍錯誤"
+        Output_label.configure(text=warning_text, text_color="#CC0000")
+    
+    # 輸入有缺漏
     else:
         # 找到最後一個 "、" 並替換為 " 為必填項目!"
         warning_text = warning_text[::-1].replace("、", "!目項填必為 ", 1)[::-1]
+        if (wrong_time_range == True):
+            warning_text += "\n警告: 起訖時間範圍錯誤"
         Output_label.configure(text=warning_text, text_color="#CC0000")
     
 

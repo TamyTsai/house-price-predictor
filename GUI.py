@@ -2405,18 +2405,7 @@ Class_6_optionMenu_year = customtkinter.CTkOptionMenu(
     width=80,
     corner_radius=6,
     )
-Class_6_optionMenu_year.place(x=70, y=10)
-
-# Class_6_label_1
-Class_6_label_1 = customtkinter.CTkLabel(
-    master=background_frame_6,
-    text="~",
-    font=("Microsoft JhengHei", 18),
-    height=40,
-    width=30,
-    corner_radius=0,
-    )
-Class_6_label_1.place(x=180, y=10)
+Class_6_optionMenu_year.place(x=80, y=10)
 
 # 目標時間 月
 Class_6_optionMenu_mon = customtkinter.CTkOptionMenu(
@@ -2429,7 +2418,7 @@ Class_6_optionMenu_mon = customtkinter.CTkOptionMenu(
     width=80,
     corner_radius=6,
     )
-Class_6_optionMenu_mon.place(x=220, y=10)
+Class_6_optionMenu_mon.place(x=200, y=10)
 
 # 底色框 7 ======================================================================= 目標面積
 background_frame_7 = customtkinter.CTkFrame(

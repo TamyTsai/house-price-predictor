@@ -3,10 +3,9 @@
 from functools import partial
 from tkinter import *
 import customtkinter
-'''
 from lib.MySQL import MySQL
 from Select import Select
-'''
+
 
 ##########################################################################################################################
 ###                                                                                                                    ###
@@ -16,12 +15,7 @@ from Select import Select
 
 # 輸入/輸出 串接函式 ======================================================================================================
 def input_io_call(dict):
-    print(dict)
-    
-    # 一律回傳 萬元/每單位面積。 須注意單位為何 "calculate_unit" （1 => M^2 ，2 => 坪）
-    return 49.9
 
-'''
     with MySQL() as db:
         print("")
         #queryBuilder =  Select().createQuery(dict)
@@ -29,7 +23,11 @@ def input_io_call(dict):
         #result = db.query("SELECT count(*) as ROWS FROM lvr_lnd WHERE city_code = %s and town_code = %s", (dict["city"], dict["town"]))
         #count = result[0].get("ROWS", 0) if result else {}
         #print(f"共查詢到了 {count}筆資料")
-'''
+    print(dict)
+    
+    # 一律回傳 萬元/每單位面積。 須注意單位為何 "calculate_unit" （1 => M^2 ，2 => 坪）
+    return 49.9
+
     
 
 

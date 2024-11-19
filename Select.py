@@ -57,7 +57,7 @@ class Select:
                     start_date, end_date = self.adjust_trade_date(value[0]), self.adjust_trade_date(value[1])
                     query_conditions.append(f"{column} BETWEEN %s AND %s")
                     params.append(start_date)  # 起始日期
-                    params.append(end_date)  # 結束日期
+                    params.append(end_date)    # 結束日期
                 elif column == "total_area" and len(value) == 2 and value[0] != "" and value[1] != "":  # 處理 total_area 範圍
                     query_conditions.append(f"{column} BETWEEN %s AND %s")
                     params.append(value[0])  # 起始值
@@ -66,7 +66,12 @@ class Select:
                     start_price, end_price = int(value[0]), int(value[1])
                     query_conditions.append(f"{column} BETWEEN %s AND %s")
                     params.append(start_price)  # 起始值
-                    params.append(end_price)  # 結束值
+                    params.append(end_price)    # 結束值
+                elif column == "age" and len(value) == 2:  # 處理年齡範圍
+                     start_age, end_age = value[0], value[1]
+                     query_conditions.append(f"{column} BETWEEN %s AND %s")
+                     params.append(start_age)  # 起始年齡
+                     params.append(end_age)    # 結束年齡
                 else:
                     # 處理其他列表條件，使用 IN 子句
                     placeholders = ', '.join(['%s'] * len(value))  # 生成與列表長度匹配的佔位符

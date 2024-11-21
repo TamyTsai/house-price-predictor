@@ -91,16 +91,16 @@ def predictive_model(user_input_list, origin_data):
 
 # 測試使用範例參數呼叫函式
 
-user_input_list = {
-    "calculate_Y": 114, # 使用者輸入之目標購置年份
-    "calculate_M": 3 # 使用者輸入之目標購置月份
-}
+# user_input_list = {
+#     "calculate_Y": 114, # 使用者輸入之目標購置年份
+#     "calculate_M": 3 # 使用者輸入之目標購置月份
+# }
 
-origin_data = {
-                11110: 116730, # 111年10月之平均成交價為每平方公尺116730元
-                11205: 121716,
-                11307: 124736
-            }
+# origin_data = {
+#                 11110: 116730, # 111年10月之平均成交價為每平方公尺116730元
+#                 11205: 121716,
+#                 11307: 124736
+#             }
 
-result = predictive_model(user_input_list, origin_data)
-print(result)
+# result = predictive_model(user_input_list, origin_data)
+# print(result)

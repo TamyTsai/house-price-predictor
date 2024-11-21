@@ -6,7 +6,7 @@ import customtkinter
 from lib.MySQL import MySQL
 from Select import Select
 from lib.Tools import Tools
-
+from predictive_model import predictive_model
 ##########################################################################################################################
 ###                                                                                                                    ###
 ###                                             負責其他區塊的請注意看到這裡                                             ###
@@ -19,20 +19,20 @@ def input_io_call(dict):
     sqlParams = tools.changeToSelectDict(dict)
     queryBuilder =  Select().createQuery(sqlParams)
     with MySQL() as db:
-        print("資料庫查詢")
+        print("資料庫查詢中．．．")
         # result = db.query(queryBuilder[0], queryBuilder[1])
         #print(queryBuilder)
-        # result = db.query("SELECT * FROM lvr_lnd WHERE city_code = %s and town_code = %s", (dict["city"], dict["town"]))
-        # data = tools.getKeyByDict(result)
-        #count = result[0].get("ROWS", 0) if result else {}
-        #print(f"共查詢到了 {count}筆資料")
+        result = db.query("SELECT * FROM lvr_lnd WHERE city_code = %s and town_code = %s", (dict["city"], dict["town"]))
+        data = tools.getKeyByDict(result)
+        userInput = {
+            "calculate_Y": dict['calculate_Y'],
+            "calculate_M": dict['calculate_M'],
+        }
+        amount = predictive_model(userInput, data)
     print(dict)
     
     # 一律回傳 萬元/每單位面積。 須注意單位為何 "calculate_unit" （1 => M^2 ，2 => 坪）
-    return 49.9
-
-    
-
+    return round(amount, 2)
 
 # I/O 、 處理函式 及 變數部分 =============================================================================================
 # [I/O]輸入資料表

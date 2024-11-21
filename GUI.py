@@ -5,7 +5,7 @@ from tkinter import *
 import customtkinter
 from lib.MySQL import MySQL
 from Select import Select
-
+from lib.Tools import Tools
 
 ##########################################################################################################################
 ###                                                                                                                    ###
@@ -15,12 +15,15 @@ from Select import Select
 
 # 輸入/輸出 串接函式 ======================================================================================================
 def input_io_call(dict):
-
+    tools = Tools()
+    sqlParams = tools.changeToSelectDict(dict)
+    queryBuilder =  Select().createQuery(sqlParams)
     with MySQL() as db:
-        print("")
-        #queryBuilder =  Select().createQuery(dict)
+        print("資料庫查詢")
+        # result = db.query(queryBuilder[0], queryBuilder[1])
         #print(queryBuilder)
-        #result = db.query("SELECT count(*) as ROWS FROM lvr_lnd WHERE city_code = %s and town_code = %s", (dict["city"], dict["town"]))
+        # result = db.query("SELECT * FROM lvr_lnd WHERE city_code = %s and town_code = %s", (dict["city"], dict["town"]))
+        # data = tools.getKeyByDict(result)
         #count = result[0].get("ROWS", 0) if result else {}
         #print(f"共查詢到了 {count}筆資料")
     print(dict)

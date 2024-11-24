@@ -55,7 +55,6 @@ class Select:
 
             if isinstance(value, list):  # 如果條件是列表，處理範圍或 IN 查詢
                 if column == "trade_date":  # 處理日期範圍
-                    print(value)
                     if len(value) == 2:
                         start_date, end_date = self.adjust_trade_date(value[0])[0], self.adjust_trade_date(value[1])[1]
                         query_conditions.append(f"{column} BETWEEN %s AND %s")

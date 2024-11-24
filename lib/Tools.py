@@ -21,13 +21,12 @@ class Tools:
         }
         #換算金額單位
         priceUnit = 10000 if data['pmoney_unit'] == 1 else 1
-        minPrice = data['minp'] * priceUnit if data['minp'] != None else ""
-        maxPrice = data['maxp'] * priceUnit if data['maxp'] != None else ""
+        minPrice = data['minp'] * priceUnit if data['minp'] != None else 0
+        maxPrice = data['maxp'] * priceUnit if data['maxp'] != None else 9999999999999
         #換算台蘋或平方公尺
         areaUnit = 3.305785 if data['unit'] == 2 else 1
-        minArea = data['mins'] * areaUnit if data['mins'] != None else ""
-        maxArea = data['maxs'] * areaUnit if data['maxs'] != None else ""
-        
+        minArea = data['mins'] * areaUnit if data['mins'] != None else 0
+        maxArea = data['maxs'] * areaUnit if data['maxs'] != None else 9999999999999
         # 日期格式化
         begin = f"{data['p_startY']}{data['p_startM']}"
         end = f"{data['p_endY']}{data['p_endM']}"

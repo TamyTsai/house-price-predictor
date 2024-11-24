@@ -20,9 +20,7 @@ def input_io_call(dict):
     queryBuilder =  Select().createQuery(sqlParams)
     with MySQL() as db:
         print("資料庫查詢中．．．")
-        # result = db.query(queryBuilder[0], queryBuilder[1])
-        #print(queryBuilder)
-        result = db.query("SELECT * FROM lvr_lnd WHERE city_code = %s and town_code = %s", (dict["city"], dict["town"]))
+        result = db.query(queryBuilder[0], queryBuilder[1])
         data = tools.getKeyByDict(result)
         userInput = {
             "calculate_Y": dict['calculate_Y'],

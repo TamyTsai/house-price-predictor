@@ -1793,7 +1793,7 @@ def on_output_button():
 
     # 輸出警告文字或調用計算函數
     if(can_output == True):
-        print("輸入正確，調用計算函數")
+        print("[GUI]輸入正確，調用計算函數")
         gui_output_float = input_io_call(user_input_list)
 
         if (user_input_list["calculate_area"] == None or user_input_list["calculate_area"] == 0):

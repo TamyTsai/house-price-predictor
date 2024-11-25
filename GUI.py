@@ -7,6 +7,7 @@ from lib.MySQL import MySQL
 from Select import Select
 from lib.Tools import Tools
 from predictive_model import predictive_model
+
 ##########################################################################################################################
 ###                                                                                                                    ###
 ###                                             負責其他區塊的請注意看到這裡                                             ###
@@ -1832,12 +1833,22 @@ def on_output_button():
 #window = Tk()                   # 初始化 tkinter 視窗
 window = customtkinter.CTk()    # 初始化 customtkinter 視窗
 window.title("房價預測器")
-window.geometry("600x720")
+window.geometry("600x400")
 
 # 設置外觀模式 (可選 "System", "Dark", "Light")
 customtkinter.set_appearance_mode("System")  # 跟隨系統設置的深色/淺色模式
 
 appearance_mode = 0
+
+# 創建可滾動框架
+scrollable_frame = customtkinter.CTkScrollableFrame(
+    master=window, 
+    width=600, 
+    height=720,
+    bg_color="transparent",
+    fg_color="transparent",
+    )
+scrollable_frame.pack(fill="both", expand=True, padx=10, pady=10)
 
 # 更新外觀模式
 def update_appearance_mode():
@@ -1854,17 +1865,24 @@ def update_appearance_mode():
         customtkinter.set_appearance_mode("System")
         appearance_btn.configure(text="系統預設")
 
+# 頂部框架
+top_frame = customtkinter.CTkFrame(
+    master=scrollable_frame, 
+    height=30, 
+    fg_color="transparent"
+    )
+top_frame.pack(side="top", fill="x", pady=0)
 
 # 外觀模式按鈕
 appearance_btn = customtkinter.CTkButton(
-    master=window,
+    master=top_frame,
     height=25,
     width=60, 
     text="系統預設",
     font=("Microsoft JhengHei", 14, "bold"),
     command=update_appearance_mode
     )
-appearance_btn.place(x=500, y=5)
+appearance_btn.pack(side="right", anchor="n", pady=0)
 
 
 radio_var_price = IntVar()
@@ -1876,36 +1894,36 @@ radio_var_areaB = IntVar()
 
 # 大標 1
 Title_1 = customtkinter.CTkLabel(
-    master=window,
+    master=top_frame,
     text="欲統計分析之交易資料條件範圍",
     font=("Microsoft JhengHei", 20, "bold"),
     anchor="w",  # 左對齊
-    height=40,
+    height=20,
     width=300,
     corner_radius=0,
     bg_color="transparent",
     fg_color="transparent",
 )
-Title_1.place(x=10, y=0)
+Title_1.pack(pady=0, anchor="w")
 
 # 註解 1
 Title_1_info = customtkinter.CTkLabel(
-    master=window,
+    master=top_frame,
     text="填寫說明: 輸入之條件建議盡量與目標購置之房屋條件相近，以增加預測可參考性",
     font=("Microsoft JhengHei", 14),
     anchor="w",
     text_color="#646464",
-    height=30,
+    height=10,
     width=300,
     corner_radius=0,
     bg_color="transparent",
     fg_color="transparent",
 )
-Title_1_info.place(x=10, y=30)
+Title_1_info.pack(pady=0, anchor="w")
 
 # 底色框 1 ======================================================================= 位置
 background_frame_1 = customtkinter.CTkFrame(
-    master=window,
+    master=scrollable_frame,
     height=80,
     width=560,
     # 使用自適應色彩
@@ -1913,7 +1931,7 @@ background_frame_1 = customtkinter.CTkFrame(
     # fg_color="#c8c8c8",
     # text_color="#000000",
 )
-background_frame_1.place(x=20, y=60)
+background_frame_1.pack(pady=5, anchor="w")
 
 # 選單-縣市
 def update_town_options(selected_city):
@@ -2050,11 +2068,11 @@ Class_1_entry.place(x=430, y=15)
 
 # 底色框 2 ======================================================================= 時間
 background_frame_2 = customtkinter.CTkFrame(
-    master=window,
+    master=scrollable_frame,
     height=80,
     width=560,
 )
-background_frame_2.place(x=20, y=160)
+background_frame_2.pack(pady=5, anchor="w")
 
 # Class_2_title
 Class_2_title = customtkinter.CTkLabel(
@@ -2156,11 +2174,11 @@ Class_2_title_info.place(x=10, y=57)
 
 # 底色框 3 ======================================================================= 單價
 background_frame_3 = customtkinter.CTkFrame(
-    master=window,
+    master=scrollable_frame,
     height=60,
     width=360,
 )
-background_frame_3.place(x=20, y=250)
+background_frame_3.pack(pady=5, anchor="w")
 
 # Class_3_title 單價
 Class_3_title = customtkinter.CTkLabel(
@@ -2244,11 +2262,11 @@ Class_3_entry_2.place(x=270, y=15)
 
 # 底色框 4 ======================================================================= 面積
 background_frame_4 = customtkinter.CTkFrame(
-    master=window,
+    master=scrollable_frame,
     height=60,
     width=360,
 )
-background_frame_4.place(x=20, y=320)
+background_frame_4.pack(pady=5, anchor="w")
 
 # Class_4_title 面積
 Class_4_title = customtkinter.CTkLabel(
@@ -2332,11 +2350,11 @@ Class_4_entry_2.place(x=270, y=15)
 
 # 底色框 5 ======================================================================= 屋齡
 background_frame_5 = customtkinter.CTkFrame(
-    master=window,
+    master=scrollable_frame,
     height=60,
     width=190,
 )
-background_frame_5.place(x=390, y=250)
+background_frame_5.pack(pady=5, anchor="w")
 
 # Class_5_title
 Class_5_title = customtkinter.CTkLabel(
@@ -2365,24 +2383,24 @@ Class_5_optionMenu.place(x=55, y=10)
 
 # 大標 2 ======================================================================= 目標
 Title_2 = customtkinter.CTkLabel(
-    master=window,
+    master=scrollable_frame,
     text="目標購置之房屋資訊",
     font=("Microsoft JhengHei", 20, "bold"),
     anchor="w",
-    height=40,
+    height=20,
     width=300,
     corner_radius=0,
     )
-Title_2.place(x=10, y=390)
+Title_2.pack(pady=10, anchor="w")
 
 
 # 底色框 6 ======================================================================= 目標時間
 background_frame_6 = customtkinter.CTkFrame(
-    master=window,
+    master=scrollable_frame,
     height=60,
     width=350,
 )
-background_frame_6.place(x=20, y=430)
+background_frame_6.pack(pady=0, anchor="w")
 
 # Class_6_title
 Class_6_title = customtkinter.CTkLabel(
@@ -2423,11 +2441,11 @@ Class_6_optionMenu_mon.place(x=200, y=10)
 
 # 底色框 7 ======================================================================= 目標面積
 background_frame_7 = customtkinter.CTkFrame(
-    master=window,
+    master=scrollable_frame,
     height=60,
     width=350,
 )
-background_frame_7.place(x=20, y=500)
+background_frame_7.pack(pady=10, anchor="w")
 
 # Class_7_title
 Class_7_title = customtkinter.CTkLabel(
@@ -2488,7 +2506,7 @@ Class_7_entry.place(x=180, y=10)
 
 # 生成資料按鈕
 Output_button = customtkinter.CTkButton(
-    master=window,
+    master=scrollable_frame,
     text="生成資料",
     font=("Microsoft JhengHei", 18, "bold"),
     hover=True,
@@ -2498,11 +2516,11 @@ Output_button = customtkinter.CTkButton(
     corner_radius=6,
     command=on_output_button,
     )
-Output_button.place(x=230, y=580)
+Output_button.pack(pady=10, anchor="center")
 
 # 輸出區
 Output_label = customtkinter.CTkLabel(
-    master=window,
+    master=scrollable_frame,
     text="輸出區",
     font=("Microsoft JhengHei", 16, "bold"),
     text_color="#0033ff",
@@ -2512,7 +2530,7 @@ Output_label = customtkinter.CTkLabel(
     bg_color="transparent",
     fg_color="transparent",
     )
-Output_label.place(x=10, y=640)
+Output_label.pack(pady=20, anchor="center")
 
 #run the main loop
 window.mainloop()

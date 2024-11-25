@@ -44,11 +44,41 @@ def input_io_call(dict):
         else:
             sqlStatusString = f"沒有可進行預測的資料"
             print(sqlStatusString)
-            return 0
+            return -1
     print(dict)
     
     # 一律回傳 萬元/每單位面積。 須注意單位為何 "calculate_unit" （1 => M^2 ，2 => 坪）
+
+
+# GUI輸出顯示函式
+def output_show(gui_output_float):
+    global user_input_list
+
+    # 形式正確的回傳值
+    if(gui_output_float > 0):
+        if (user_input_list["calculate_area"] == None or user_input_list["calculate_area"] == 0):
+            # 輸入值無面積時，返回 萬元/坪(or 平方米)
+            if(user_input_list["calculate_unit"] == 2):     # 單位:坪
+                output_text = f"預期價格: {gui_output_float}萬元/坪"
+            elif(user_input_list["calculate_unit"] == 1):   # 單位:平方米
+                output_text = f"預期價格: {gui_output_float}萬元/平方米"
+            else:
+                print("[GUI]錯誤! 未定義的單位")
+        else:
+            # 輸入值有面積時，返回 總價-萬元
+            output_text = f"預期價格: {gui_output_float * user_input_list["calculate_area"]}萬元"        
+        Output_label.configure(text=output_text, text_color="#5555FF")
     
+    # 錯誤代碼
+    elif(gui_output_float == -1):
+        output_text = f"[ERROR -1]沒有可進行預測的資料"        
+        Output_label.configure(text=output_text, text_color="#CC0000")
+
+    else:
+        output_text = f"[ERROR ??]未知的錯誤代碼:{gui_output_float}"        
+        Output_label.configure(text=output_text, text_color="#CC0000")
+
+
 
 # I/O 、 處理函式 及 變數部分 =============================================================================================
 # [I/O]輸入資料表
@@ -1814,20 +1844,7 @@ def on_output_button():
     if(can_output == True):
         print("[GUI]輸入正確，調用計算函數")
         gui_output_float = input_io_call(user_input_list)
-
-        if (user_input_list["calculate_area"] == None or user_input_list["calculate_area"] == 0):
-        # 輸入值無面積時，返回 萬元/坪(or 平方米)
-            if(user_input_list["calculate_unit"] == 2):     # 單位:坪
-                output_text = f"預期價格: {gui_output_float}萬元/坪"
-            elif(user_input_list["calculate_unit"] == 1):   # 單位:平方米
-                output_text = f"預期價格: {gui_output_float}萬元/平方米"
-            else:
-                print("[GUI]錯誤! 未定義的單位")
-        else:
-        # 輸入值有面積時，返回 總價-萬元
-            output_text = f"預期價格: {gui_output_float * user_input_list["calculate_area"]}萬元"
-        
-        Output_label.configure(text=output_text, text_color="#5555FF")
+        output_show(gui_output_float)
 
     # 僅有起訖時間範圍錯誤
     elif (warning_text == "警告: " and wrong_time_range == True):

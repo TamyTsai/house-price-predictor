@@ -1,38 +1,37 @@
 import pandas as pd
 import numpy as np
-import json
 
 # 預測函式
-# 根據使用者輸入，呼叫撈取資料庫對應資料之函式，運用迴歸公式，產出預測單價（萬元/坪），供GUI呼叫並計算（單價*目標面積（坪）=預測總價（萬元））以顯示預測結果
-def input_io_call(user_input_list):
+# 根據使用者輸入，計算迴歸公式，產出預測單價（萬元/坪），供GUI呼叫並計算（單價*目標面積（坪）=預測總價（萬元））以顯示預測結果（單價或總價，如欲顯示總價，則需要再做額外運算）
+def predictive_model(user_input_list, origin_data):
     """
     本函式可回傳依據使用者輸入條件，所模擬計算出的預測房價單價（萬元/坪）
 
     參數:
         user_input_list (dict): 從GUI介面取得的使用者輸入條件清單
+        origin_data (dict)： 交易年月及各該年月平均單價（元/平方公尺）（資料按交易時間由舊到新排序）
 
     回傳:
-        int, float: 預測房價單價（萬元/坪）
+        float: 預測房價單價（萬元/坪）
 
     範例:
         >>> input_io_call(user_input_list)
         42.34489458593352
     """
 
-    # 以使用者查詢輸入作為參數，呼叫撈取資料庫資料函式
-    # 獲取「交易年月」及「各交易年月平均單價」（json檔：key為交易年月，value為該月平均單價（元/平方公尺））（資料按交易時間由舊到新排序），並將回傳的結果儲存到變數origin_data
-    # json檔範例：
+    # 應傳入之參數origin_data（字典）範例：
     # {
     #     11110: 116730, # 111年10月之平均成交價為每平方公尺116730元
     #     11205: 121716,
     #     11307: 124736
     # }
+    # key為「交易年月」，value為「各該月平均單價（元/平方公尺）」（資料按交易時間由舊到新排序）
 
-    # 將json檔的key交易年月轉成串列，儲存到變數trade_time_month
-    trade_time_month = list(origin_data.keys()) # 使用 .keys() 方法獲取json檔中所有 key，並轉成串列
+    # 將交易資料字典的key（交易年月）提取出來，形成串列，存入變數trade_time_month 
+    trade_time_month = list(origin_data.keys())
     # 範例：trade_time_month = [11110, 11205, 11307]
 
-    # 將json檔的value各月平均單價（元/平方公尺）轉成串列，儲存到變數house_price_per_square_meter_month_average
+    # 將交易資料字典的value（各交易年月平均單價（元/平方公尺））提取出來，形成串列，存入變數house_price_per_square_meter_month_average
     house_price_per_square_meter_month_average = list(origin_data.values())
     # 範例：house_price_per_square_meter_month_average = [116730, 121716, 124736]
 
@@ -55,9 +54,9 @@ def input_io_call(user_input_list):
     # （111年10月與基期111年10月相差0個月；112年5月與111年10月相差7個月；113年7月與111年10月相差21個月）
 
     # 取得使用者輸入的欲購置交易年月，並儲存為變數buy_time_year與buy_time_month
-    buy_time_year = user_input_list[calculate_Y] # 從使用者輸入字典中提取key為calculate_Y所對應之value（目標期間（年））
+    buy_time_year = user_input_list["calculate_Y"] # 從使用者輸入字典中提取key為calculate_Y所對應之value（目標期間（年））
     # 範例：buy_time_year = 114
-    buy_time_month = user_input_list[calculate_M] # 從使用者輸入字典中提取key為calculate_M所對應之value（目標期間（月））
+    buy_time_month = user_input_list["calculate_M"] # 從使用者輸入字典中提取key為calculate_M所對應之value（目標期間（月））
     # 範例：buy_time_month = 3
 
     # 轉換變數buy_time_year與buy_time_month，並儲存為變數buy_time
@@ -90,5 +89,18 @@ def input_io_call(user_input_list):
     # 範例：42.34489458593352（萬元/坪）
     
 
+# 測試使用範例參數呼叫函式
 
+# user_input_list = {
+#     "calculate_Y": 114, # 使用者輸入之目標購置年份
+#     "calculate_M": 3 # 使用者輸入之目標購置月份
+# }
 
+# origin_data = {
+#                 11110: 116730, # 111年10月之平均成交價為每平方公尺116730元
+#                 11205: 121716,
+#                 11307: 124736
+#             }
+
+# result = predictive_model(user_input_list, origin_data)
+# print(result)

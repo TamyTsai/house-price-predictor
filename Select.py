@@ -14,14 +14,15 @@ class Select:
         # 將日期字符串拆分為年份和月份
         year = str(trade_date)[:3]  # 年份前三位
         month = str(trade_date)[3:5]  # 月份後兩位
-
+        month = f"0{month}" if int(month) < 10 else month
         # 構建起始日期：以該月的01號作為起始
-        start_date = f"{year}0{month}01"
+        start_date = f"{year}{month}01"
 
         # 根據年份和月份來確定該月的最後一天
         # calendar.monthrange 返回該月的天數
         _, last_day = calendar.monthrange(int(year) + 1911, int(month))  # 月份是從 1 開始
-        end_date = f"{year}0{month}{last_day}"
+        end_date = f"{year}{month}{last_day}"
+        return (int(start_date), int(end_date))
 
     def save_to_json(self, data, filename="query_result.json"):
         """
@@ -53,25 +54,29 @@ class Select:
                 continue
 
             if isinstance(value, list):  # 如果條件是列表，處理範圍或 IN 查詢
-                if column == "trade_date" and len(value) == 2:  # 處理日期範圍
-                    start_date, end_date = self.adjust_trade_date(value[0]), self.adjust_trade_date(value[1])
-                    query_conditions.append(f"{column} BETWEEN %s AND %s")
-                    params.append(start_date)  # 起始日期
-                    params.append(end_date)    # 結束日期
-                elif column == "total_area" and len(value) == 2 and value[0] != "" and value[1] != "":  # 處理 total_area 範圍
-                    query_conditions.append(f"{column} BETWEEN %s AND %s")
-                    params.append(value[0])  # 起始值
-                    params.append(value[1])  # 結束值
-                elif column == "price_nuit" and value != ["", ""]:  # 處理 price_nuit 範圍
-                    start_price, end_price = int(value[0]), int(value[1])
-                    query_conditions.append(f"{column} BETWEEN %s AND %s")
-                    params.append(start_price)  # 起始值
-                    params.append(end_price)    # 結束值
-                elif column == "age" and len(value) == 2:  # 處理年齡範圍
-                     start_age, end_age = value[0], value[1]
-                     query_conditions.append(f"{column} BETWEEN %s AND %s")
-                     params.append(start_age)  # 起始年齡
-                     params.append(end_age)    # 結束年齡
+                if column == "trade_date":  # 處理日期範圍
+                    if len(value) == 2:
+                        start_date, end_date = self.adjust_trade_date(value[0])[0], self.adjust_trade_date(value[1])[1]
+                        query_conditions.append(f"{column} BETWEEN %s AND %s")
+                        params.append(start_date)  # 起始日期
+                        params.append(end_date)    # 結束日期
+                elif column == "total_area":  # 處理 total_area 範圍
+                    if len(value) == 2 and value[0] != "" and value[1] != "":
+                        query_conditions.append(f"{column} BETWEEN %s AND %s")
+                        params.append(value[0])  # 起始值
+                        params.append(value[1])  # 結束值
+                elif column == "price_nuit":  # 處理 price_nuit 範圍
+                    if value != ["", ""]:
+                        start_price, end_price = int(value[0]), int(value[1])
+                        query_conditions.append(f"{column} BETWEEN %s AND %s")
+                        params.append(start_price)  # 起始值
+                        params.append(end_price)    # 結束值
+                elif column == "age":  # 處理年齡範圍
+                    if len(value) == 2:
+                        start_age, end_age = value[0], value[1]
+                        query_conditions.append(f"{column} BETWEEN %s AND %s")
+                        params.append(start_age)  # 起始年齡
+                        params.append(end_age)    # 結束年齡
                 else:
                     # 處理其他列表條件，使用 IN 子句
                     placeholders = ', '.join(['%s'] * len(value))  # 生成與列表長度匹配的佔位符

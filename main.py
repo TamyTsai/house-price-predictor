@@ -1,5 +1,6 @@
+import GUI
 
 def main():
-    print("Hello")
+    print("Start App")
 
 main()

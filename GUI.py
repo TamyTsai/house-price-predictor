@@ -14,24 +14,41 @@ from predictive_model import predictive_model
 ###                                                                                                                    ###
 ##########################################################################################################################
 
+# 提供程式運作的當前狀態
+sqlStatusString = ""
+
 # 輸入/輸出 串接函式 ======================================================================================================
 def input_io_call(dict):
     tools = Tools()
     sqlParams = tools.changeToSelectDict(dict)
     queryBuilder =  Select().createQuery(sqlParams)
     with MySQL() as db:
-        print("資料庫查詢中．．．")
+        sqlStatusString = "資料庫查詢中．．．"
+        print(sqlStatusString)
         result = db.query(queryBuilder[0], queryBuilder[1])
-        data = tools.getKeyByDict(result)
-        userInput = {
-            "calculate_Y": dict['calculate_Y'],
-            "calculate_M": dict['calculate_M'],
-        }
-        amount = predictive_model(userInput, data)
+        count = len(result)
+        sqlStatusString = f"查詢到{count}筆交易紀錄．．．"
+        print(sqlStatusString)
+        if count > 0:
+            data = tools.getKeyByDict(result)
+            userInput = {
+                "calculate_Y": dict['calculate_Y'],
+                "calculate_M": dict['calculate_M'],
+            }
+            sqlStatusString = f"進行預測"
+            print(sqlStatusString)
+            amount = predictive_model(userInput, data)
+            sqlStatusString = f"預測完成輸出結果"
+            print(sqlStatusString)
+            return round(amount, 2)
+        else:
+            sqlStatusString = f"沒有可進行預測的資料"
+            print(sqlStatusString)
+            return 0
     print(dict)
     
     # 一律回傳 萬元/每單位面積。 須注意單位為何 "calculate_unit" （1 => M^2 ，2 => 坪）
-    return round(amount, 2)
+    
 
 # I/O 、 處理函式 及 變數部分 =============================================================================================
 # [I/O]輸入資料表

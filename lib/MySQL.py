@@ -27,6 +27,9 @@ class MySQL:
         except Error as e:
             print(f"連接資料庫失敗: {e}")
             self.connection = None
+        except Exception as e:
+            print(f"其他異常: {e}")
+            self.connection = None
 
     def query(self, sql, params=None):
         """

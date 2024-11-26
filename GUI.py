@@ -1990,7 +1990,7 @@ background_frame_1.pack(pady=5, anchor="w")
 def update_town_options(selected_city):
     # 使用通用回調函數獲取 code
     city_code=get_selected_key(selected_city, city_dict, code="city")
-    print(f"\n目前選擇縣市:{selected_city},code = {city_code}")
+    print(f"\n[GUI]目前選擇縣市:{selected_city},code = {city_code}")
 
     # 取得對應城市代碼的資料
     options = town_dict.get(city_code, [])

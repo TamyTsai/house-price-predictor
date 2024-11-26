@@ -1,6 +1,6 @@
 import GUI
 
 def main():
-    print("Start App")
+    print("程式結束")
 
 main()

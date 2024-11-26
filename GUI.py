@@ -66,15 +66,26 @@ def output_show(gui_output_float):
         if (user_input_list["calculate_area"] == None or user_input_list["calculate_area"] == 0):
             # 輸入值無面積時，返回 萬元/坪(or 平方米)
             if(user_input_list["calculate_unit"] == 2):     # 單位:坪
-                output_text = f"預期價格: {gui_output_float}萬元/坪"
+                show_number = gui_output_float
+                output_text = f"預期價格: {show_number:.2f}萬元/坪"
             elif(user_input_list["calculate_unit"] == 1):   # 單位:平方米 
-                # 一坪等於3.3058平方公尺
-                output_text = f"預期價格: {gui_output_float}萬元/平方米"
+                # 1坪 = 3.30579 平方公尺
+                show_number = gui_output_float / 3.30579
+                output_text = f"預期價格: {show_number:.2f}萬元/平方米"
             else:
                 print("[GUI]錯誤! 未定義的單位")
         else:
             # 輸入值有面積時，返回 總價-萬元
-            output_text = f"預期價格: {gui_output_float * user_input_list["calculate_area"]}萬元"        
+            if(user_input_list["calculate_unit"] == 2):     # 單位:坪
+                show_number = gui_output_float * user_input_list["calculate_area"]
+                output_text = f"預期總價格: {show_number:.2f}萬元"
+            elif(user_input_list["calculate_unit"] == 1):   # 單位:平方米 
+                # 1坪 = 3.30579 平方公尺
+                show_number = (gui_output_float * user_input_list["calculate_area"]) / 3.30579
+                output_text = f"預期總價格: {show_number:.2f}萬元"
+            else:
+                print(f"[GUI]錯誤! 未定義的單位:{user_input_list["calculate_unit"]}")  
+                output_text = f"錯誤! 未定義的單位:{user_input_list["calculate_unit"]}"
         Output_label.configure(text=output_text, text_color="#5555FF")
     
     # 錯誤代碼

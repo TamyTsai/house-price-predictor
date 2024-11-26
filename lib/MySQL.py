@@ -20,7 +20,8 @@ class MySQL:
                 host=self.host,
                 user=self.user,
                 password=self.password,
-                database=self.database
+                database=self.database,
+                use_pure=True       # 避免使用C擴展
             )
             if self.connection.is_connected():
                 print("成功連接到資料庫")

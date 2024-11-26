@@ -54,6 +54,7 @@ def input_io_call(dict):
     print(dict)
     
     # 一律回傳 萬元/每單位面積。 須注意單位為何 "calculate_unit" （1 => M^2 ，2 => 坪）
+    # 一坪等於3.3058平方公尺
 
 
 # GUI輸出顯示函式
@@ -66,7 +67,8 @@ def output_show(gui_output_float):
             # 輸入值無面積時，返回 萬元/坪(or 平方米)
             if(user_input_list["calculate_unit"] == 2):     # 單位:坪
                 output_text = f"預期價格: {gui_output_float}萬元/坪"
-            elif(user_input_list["calculate_unit"] == 1):   # 單位:平方米
+            elif(user_input_list["calculate_unit"] == 1):   # 單位:平方米 
+                # 一坪等於3.3058平方公尺
                 output_text = f"預期價格: {gui_output_float}萬元/平方米"
             else:
                 print("[GUI]錯誤! 未定義的單位")

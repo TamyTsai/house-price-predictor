@@ -2040,7 +2040,7 @@ Class_1_optionMenu_2.place(x=110, y=20)
 # Class_1_checkbox 房屋=1
 Class_1_checkbox_1 = customtkinter.CTkCheckBox(
     master=background_frame_1,
-    text="房屋",
+    text="房地",
     font=("Microsoft JhengHei", 14),
     corner_radius=4,
     border_width=2,

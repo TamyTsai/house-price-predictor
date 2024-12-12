@@ -1886,7 +1886,7 @@ def on_output_button():
 #window = Tk()                   # 初始化 tkinter 視窗
 window = customtkinter.CTk()    # 初始化 customtkinter 視窗
 window.title("房價預測器")
-window.geometry("600x600")
+window.geometry("600x720")
 
 # 設置外觀模式 (可選 "System", "Dark", "Light")
 customtkinter.set_appearance_mode("System")  # 跟隨系統設置的深色/淺色模式

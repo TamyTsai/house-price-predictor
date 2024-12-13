@@ -1,0 +1,3 @@
+([('房價預測器_MacOS_v0.2',
+   '/Users/tamy/Desktop/空中大學/113-1/Python程式設計與實務應用/作業/期末小組作業/(原始)NOU_python_zzz002_work/dist/房價預測器_MacOS_v0.2',
+   'EXECUTABLE')],)

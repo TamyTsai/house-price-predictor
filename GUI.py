@@ -20,7 +20,7 @@ sqlStatusString = ""
 # 輸入/輸出 串接函式 ======================================================================================================
 def input_io_call(dict):
     # 顯示查詢文字並強制刷新
-    output_text = f"資料庫查詢中，請稍後......"        
+    output_text = f"資料庫查詢中，請稍候......"        
     Output_label.configure(text=output_text, text_color="#FFAA00")
     window.update()
 
